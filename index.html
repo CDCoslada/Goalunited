@@ -253,7 +253,39 @@ font-size:16px;
 function mostrar(seccion){
 
 let contenido=document.getElementById("contenido");
+if(seccion=="edicion1"){
 
+contenido.innerHTML=`
+
+<h2>🏆 I LIGA ELITE ESPAÑA</h2>
+
+<div class="tarjeta">
+
+<h3>👥 Participantes Oficiales</h3>
+
+<img src="edicion1-participantes.jpg" style="
+width:100%;
+border-radius:15px;
+margin-top:10px;
+">
+
+</div>
+
+<div class="tarjeta">
+
+<h3>📊 Fase de Grupos</h3>
+
+<img src="edicion1-grupos.jpg" style="
+width:100%;
+border-radius:15px;
+margin-top:10px;
+">
+
+</div>
+
+`;
+
+}
 if(seccion=="competicion"){
 
 contenido.innerHTML=`
