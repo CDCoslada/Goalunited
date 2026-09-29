@@ -600,6 +600,7 @@ El cuadro eliminatorio será publicado tras la fase de grupos.
 `;
 
 }
+
 if(seccion=="noticias"){
 
 contenido.innerHTML=`
@@ -629,6 +630,7 @@ Aquí aparecerán sorteos, clasificaciones, resultados y anuncios oficiales.
 `;
 
 }
+
 if(seccion=="palmares"){
 
 contenido.innerHTML=`
@@ -646,6 +648,7 @@ contenido.innerHTML=`
 `;
 
 }
+
 if(seccion=="ediciones"){
 
 contenido.innerHTML=`
@@ -677,21 +680,6 @@ Ver edición
 
 }
 
+}  // ← Cierre de function mostrar(seccion)
 
 </script>
-
-<script>
-fetch('https://api.countapi.xyz/hit/ligaeliteespana/visitas')
-.then(response => response.json())
-.then(data => {
-document.getElementById('contador-visitas').innerHTML =
-'👁️ Visitas totales: ' + data.value;
-})
-.catch(() => {
-document.getElementById('contador-visitas').innerHTML =
-'👁️ Visitas no disponibles';
-});
-</script>
-
-</body>
-</html>
