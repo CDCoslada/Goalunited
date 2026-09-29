@@ -215,7 +215,19 @@ Selecciona una pestaña superior para consultar la información del torneo.
 </div>
 
 <footer>
+
+<div>
 Liga Elite España © 2026
+</div>
+
+<div id="contador-visitas" style="
+margin-top:10px;
+color:#d4af37;
+font-weight:bold;
+font-size:16px;
+">
+👁️ Cargando visitas...
+</div>
 </footer>
 
 <script>
@@ -398,6 +410,19 @@ contenido.innerHTML=`
 
 }
 
+</script>
+
+<script>
+fetch('https://api.countapi.xyz/hit/ligaeliteespana/visitas')
+.then(response => response.json())
+.then(data => {
+document.getElementById('contador-visitas').innerHTML =
+'👁️ Visitas totales: ' + data.value;
+})
+.catch(() => {
+document.getElementById('contador-visitas').innerHTML =
+'👁️ Visitas no disponibles';
+});
 </script>
 
 </body>
