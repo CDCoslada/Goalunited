@@ -1,91 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Liga Elite España</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#07142d;
+color:white;
+}
+
+header{
+text-align:center;
+padding:20px;
+}
+
+nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+margin-bottom:25px;
+}
+
+.menu-btn{
+display:flex;
+align-items:center;
+gap:8px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+padding:10px;
+transition:0.3s;
+}
+
+.menu-btn:hover{
+color:#d4af37;
+}
+
+.menu-btn img{
+width:26px;
+height:26px;
+}
+
+.logo-principal{
+width:260px;
+margin-bottom:15px;
+}
+
+.titulo{
+font-size:42px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.subtitulo{
+color:#d4af37;
+font-size:18px;
+}
+
+#contenido{
+width:90%;
+max-width:1200px;
+margin:0 auto 50px auto;
+background:white;
+color:#222;
+border-radius:20px;
+padding:35px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+min-height:500px;
+}
+
+#contenido h2{
+color:#b8860b;
+margin-bottom:20px;
+}
+
+#contenido h3{
+margin-bottom:10px;
+color:#07142d;
+}
+
+.tarjeta{
+background:#f5f5f5;
+border-radius:15px;
+padding:20px;
+margin-top:20px;
+}
+
+.tarjetas{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:20px;
+}
+
+.tarjeta-numero{
+background:#f5f5f5;
+border-radius:15px;
+padding:20px;
+flex:1;
+min-width:250px;
+text-align:center;
+}
+
+.tarjeta-numero h1{
+font-size:40px;
+color:#b8860b;
+}
+
+.equipo{
+background:#f5f5f5;
+border-radius:12px;
+padding:15px;
+flex:1;
+min-width:250px;
+border-left:5px solid #d4af37;
+}
+
+.equipo strong{
+display:block;
+font-size:16px;
+margin-bottom:5px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#999;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<button class="menu-btn" onclick="mostrar('competicion')">
+<img src="Goalunited.png">
+<span>COMPETICIÓN</span>
+</button>
+
+<button class="menu-btn" onclick="mostrar('participantes')">
+<img src="escudo.png">
+<span>PARTICIPANTES</span>
+</button>
+
+<button class="menu-btn" onclick="mostrar('grupos')">
+<img src="grupos.png">
+<span>FASE DE GRUPOS</span>
+</button>
+
+<button class="menu-btn" onclick="mostrar('eliminatorias')">
+<img src="eliminatorias.png">
+<span>FASE ELIMINATORIAS</span>
+</button>
+
+<button class="menu-btn" onclick="mostrar('palmares')">
+<img src="trofeo.png">
+<span>PALMARÉS</span>
+</button>
+
+</nav>
+
+<img src="logo.png" class="logo-principal">
+
+<div class="titulo">LIGA ELITE ESPAÑA</div>
+
+<div class="subtitulo">
+32 participantes · 8 grupos · Eliminatorias directas
+</div>
+
+</header>
+
+<div id="contenido">
+
+<h2>Bienvenido a la Liga Elite España</h2>
+
+<p>
+Selecciona una pestaña superior para consultar la información del torneo.
+</p>
+
+<div class="tarjeta">
+🏆 Primera edición oficial de la competición.
+</div>
+
+</div>
+
+<footer>
+Liga Elite España © 2026
+</footer>
+
+<script>
+
+function mostrar(seccion){
+
+let contenido=document.getElementById("contenido");
+
+if(seccion=="competicion"){
+
+contenido.innerHTML=`
+
+<h2>🏆 COMPETICIÓN</h2>
+
+<div class="tarjeta">
+<h3>Bienvenida</h3>
+
+<p>
+La Liga Elite España reúne a los mejores managers de los servidores Focos y Efecto.
+</p>
+
+<p>
+La competición se disputa coincidiendo con la inactividad de los partidos oficiales.
+</p>
+</div>
+
+<div class="tarjeta">
+<h3>📅 Calendario Oficial</h3>
+
+<p><b>Días:</b> Martes y Domingo</p>
+<p><b>Horario:</b> 18:00</p>
+</div>
+
+<div class="tarjetas">
+
+<div class="tarjeta-numero">
+<h3>1ª DIVISIÓN FOCOS</h3>
+<h1>12</h1>
+</div>
+
+<div class="tarjeta-numero">
+<h3>1ª DIVISIÓN EFECTO</h3>
+<h1>12</h1>
+</div>
+
+<div class="tarjeta-numero">
+<h3>CAMPEONES 2ª DIVISIÓN</h3>
+<h1>6</h1>
+</div>
+
+<div class="tarjeta-numero">
+<h3>CAMPEONES DE COPA</h3>
+<h1>2</h1>
+</div>
+
+</div>
+
+<div class="tarjeta">
+<h3>⚠️ Casos Especiales</h3>
+
+<p>
+Si alguno de los campeones de Copa ya hubiera obtenido su clasificación mediante otro criterio, la plaza correspondiente será asignada al siguiente campeón de 2ª División disponible.
+</p>
+</div>
+
+<div class="tarjeta">
+<h3>🔄 Renuncias y Sustituciones</h3>
+
+<p>
+Si un manager clasificado rechaza su participación, la plaza será ofrecida al siguiente mejor clasificado disponible hasta completar las 32 plazas.
+</p>
+</div>
+
+`;
+
+}
+
 if(seccion=="participantes"){
+
 contenido.innerHTML=`
 
 <h2>👥 PARTICIPANTES CONFIRMADOS</h2>
 
 <div class="tarjeta">
-<h3>Estado actual</h3>
-
 <p><b>23 participantes confirmados</b> de las 32 plazas disponibles.</p>
-
 <p><b>9 plazas pendientes de asignación.</b></p>
 </div>
-
-<div class="tarjeta">
 
 <h3>🏆 Clasificados de 1ª División Focos</h3>
 
 <div class="tarjetas">
 
-<div class="tarjeta-numero"><p>🏆 Clube Deportivo Lalin<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Malaga Champion<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Diegotabanera F.C.<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 C.D.Coslada<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 TARGARYEN.C.F<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Club Deportivo 3-34<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 CD Toledo<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Atlético Madrileño SAD<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 FC Dago<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 ZAMA UNITED<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Benimàmet Atlético [VLC]<br><small>1ª División Focos</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Cubillos F.C.<br><small>1ª División Focos</small></p></div>
+<div class="equipo"><strong>Clube Deportivo Lalin</strong>1ª División Focos</div>
+<div class="equipo"><strong>Malaga Champion</strong>1ª División Focos</div>
+<div class="equipo"><strong>Diegotabanera F.C.</strong>1ª División Focos</div>
+<div class="equipo"><strong>C.D.Coslada</strong>1ª División Focos</div>
+<div class="equipo"><strong>TARGARYEN.C.F</strong>1ª División Focos</div>
+<div class="equipo"><strong>Club Deportivo 3-34</strong>1ª División Focos</div>
+<div class="equipo"><strong>CD Toledo</strong>1ª División Focos</div>
+<div class="equipo"><strong>Atlético Madrileño SAD</strong>1ª División Focos</div>
+<div class="equipo"><strong>FC Dago</strong>1ª División Focos</div>
+<div class="equipo"><strong>ZAMA UNITED</strong>1ª División Focos</div>
+<div class="equipo"><strong>Benimàmet Atlético [VLC]</strong>1ª División Focos</div>
+<div class="equipo"><strong>Cubillos F.C.</strong>1ª División Focos</div>
 
 </div>
 
-</div>
-
-<div class="tarjeta">
-
-<h3>⚡ Clasificados de 1ª División Efecto</h3>
+<h3 style="margin-top:30px;">⚡ Clasificados de 1ª División Efecto</h3>
 
 <div class="tarjetas">
 
-<div class="tarjeta-numero"><p>🏆 LORD LEON DORADO (CHILE)<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 R.C.D. As Pontes<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 U. D. Pulguense<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Dynamo Churrikistan SV<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Palomos Cojos F.C.<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 SECONDIGLIANO USCC<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 C.F. Palencia<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 A. D. SAN JOSE<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 U. D. Chafiras<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Celtic Toledo F.C.<br><small>1ª División Efecto</small></p></div>
-
-<div class="tarjeta-numero"><p>🏆 Arroz a la Cubana FC<br><small>1ª División Efecto</small></p></div>
-
-</div>
+<div class="equipo"><strong>LORD LEON DORADO (CHILE)</strong>1ª División Efecto</div>
+<div class="equipo"><strong>R.C.D. As Pontes</strong>1ª División Efecto</div>
+<div class="equipo"><strong>U. D. Pulguense</strong>1ª División Efecto</div>
+<div class="equipo"><strong>Dynamo Churrikistan SV</strong>1ª División Efecto</div>
+<div class="equipo"><strong>Palomos Cojos F.C.</strong>1ª División Efecto</div>
+<div class="equipo"><strong>SECONDIGLIANO USCC</strong>1ª División Efecto</div>
+<div class="equipo"><strong>C.F. Palencia</strong>1ª División Efecto</div>
+<div class="equipo"><strong>A. D. SAN JOSE</strong>1ª División Efecto</div>
+<div class="equipo"><strong>U. D. Chafiras</strong>1ª División Efecto</div>
+<div class="equipo"><strong>Celtic Toledo F.C.</strong>1ª División Efecto</div>
+<div class="equipo"><strong>Arroz a la Cubana FC</strong>1ª División Efecto</div>
 
 </div>
 
 <div class="tarjeta">
-
-<h3>⏳ Plazas Pendientes</h3>
-
-<p>
-9 plazas todavía por determinar.
-</p>
-
+<h3>⏳ Plazas pendientes</h3>
+<p>9 plazas todavía por determinar.</p>
 </div>
 
 `;
+
 }
+
+if(seccion=="grupos"){
+
+contenido.innerHTML=`
+
+<h2>📊 FASE DE GRUPOS</h2>
+
+<div class="tarjeta">
+La fase de grupos será publicada cuando finalice el proceso de clasificación.
+</div>
+
+`;
+
+}
+
+if(seccion=="eliminatorias"){
+
+contenido.innerHTML=`
+
+<h2>🎯 FASE ELIMINATORIAS</h2>
+
+<div class="tarjeta">
+El cuadro eliminatorio será publicado tras la fase de grupos.
+</div>
+
+`;
+
+}
+
+if(seccion=="palmares"){
+
+contenido.innerHTML=`
+
+<h2>🏆 PALMARÉS</h2>
+
+<div class="tarjeta">
+🥇 Campeón: Pendiente
+</div>
+
+<div class="tarjeta">
+🥈 Subcampeón: Pendiente
+</div>
+
+`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
