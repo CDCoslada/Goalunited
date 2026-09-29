@@ -600,7 +600,35 @@ El cuadro eliminatorio será publicado tras la fase de grupos.
 `;
 
 }
+if(seccion=="noticias"){
 
+contenido.innerHTML=`
+
+<h2>📰 NOTICIAS</h2>
+
+<div class="tarjeta">
+
+<h3>📢 Bienvenido a la Liga Elite España</h3>
+
+<p>
+En esta sección se publicarán todas las novedades oficiales de la competición.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h3>🔥 Próximamente</h3>
+
+<p>
+Aquí aparecerán sorteos, clasificaciones, resultados y anuncios oficiales.
+</p>
+
+</div>
+
+`;
+
+}
 if(seccion=="palmares"){
 
 contenido.innerHTML=`
@@ -618,8 +646,37 @@ contenido.innerHTML=`
 `;
 
 }
+if(seccion=="ediciones"){
+
+contenido.innerHTML=`
+
+<h2>📚 EDICIONES</h2>
+
+<div class="tarjeta">
+
+<h3>🔴 I Liga Elite España</h3>
+
+<p>
+Edición actualmente en disputa.
+</p>
+
+<button onclick="mostrar('edicion1')" style="
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#d4af37;
+font-weight:bold;
+cursor:pointer;
+">
+Ver edición
+</button>
+
+</div>
+
+`;
 
 }
+
 
 </script>
 
