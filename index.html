@@ -1182,7 +1182,25 @@ contenido.innerHTML=`
 
 }
 
-if(seccion.endsWith("_temporada70")){
+if(seccion=="copafocos_temporada70"){
+
+contenido.innerHTML=`
+
+<h2>🥇 COPA FOCOS - TEMPORADA 70</h2>
+
+<img src="Temp70Focosc.jpg" style="
+width:100%;
+max-width:1200px;
+display:block;
+margin:20px auto;
+border-radius:10px;
+">
+
+`;
+
+}
+
+if(seccion.endsWith("_temporada70") && seccion!="copafocos_temporada70"){
 
 contenido.innerHTML=`
 
@@ -1193,6 +1211,5 @@ contenido.innerHTML=`
 `;
 
 }
-  }  // ← Cierre de function mostrar(seccion)
 
-</script>
+}  // ← Cierre de function mostrar(seccion)
