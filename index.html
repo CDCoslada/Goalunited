@@ -1197,7 +1197,29 @@ border-radius:10px;
 
 }
 
-if(seccion.endsWith("_temporada70") && seccion!="copafocos_temporada70"){
+if(seccion=="copaefecto_temporada70"){
+
+contenido.innerHTML=`
+
+<button onclick="mostrar('copaefecto')">⬅ VOLVER</button>
+
+<h2>🥇 COPA EFECTO - TEMPORADA 70</h2>
+
+<img src="Temp70Efectoc.jpg" style="
+width:100%;
+max-width:1200px;
+display:block;
+margin:20px auto;
+border-radius:10px;
+">
+
+`;
+
+}
+
+if(seccion.endsWith("_temporada70") &&
+   seccion!="copafocos_temporada70" &&
+   seccion!="copaefecto_temporada70"){
 
 let volver=seccion.replace("_temporada70","");
 
