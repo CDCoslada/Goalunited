@@ -1012,6 +1012,19 @@ if(seccion=="nacionales"){
 
 contenido.innerHTML=`
 
+<button onclick="mostrar('goalunited')" style="
+padding:10px 20px;
+background:#d4af37;
+color:#07142d;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+margin-bottom:20px;
+">
+⬅ VOLVER
+</button>
+
 <div style="display:flex;flex-direction:column;gap:15px;">
 
 <button onclick="mostrar('ligafocos')" style="
@@ -1103,54 +1116,28 @@ if(seccion=="copaefecto") titulo="🥇 COPA EFECTO";
 
 contenido.innerHTML=`
 
+<button onclick="mostrar('nacionales')" style="
+padding:10px 20px;
+background:#d4af37;
+color:#07142d;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+margin-bottom:20px;
+">
+⬅ VOLVER
+</button>
+
 <h2>${titulo}</h2>
 
 <div style="display:flex;flex-direction:column;gap:15px;">
 
-<button onclick="mostrar('${seccion}_palmares')" style="
-width:450px;
-padding:15px;
-font-size:18px;
-font-weight:bold;
-background:#d4af37;
-color:#07142d;
-border:none;
-border-radius:10px;
-cursor:pointer;
-text-align:left;
-">
-🏆 PALMARÉS
-</button>
+<button onclick="mostrar('${seccion}_palmares')">🏆 PALMARÉS</button>
 
-<button onclick="mostrar('${seccion}_ranking')" style="
-width:450px;
-padding:15px;
-font-size:18px;
-font-weight:bold;
-background:#d4af37;
-color:#07142d;
-border:none;
-border-radius:10px;
-cursor:pointer;
-text-align:left;
-">
-📊 RANKING
-</button>
+<button onclick="mostrar('${seccion}_ranking')">📊 RANKING</button>
 
-<button onclick="mostrar('${seccion}_temporada70')" style="
-width:450px;
-padding:15px;
-font-size:18px;
-font-weight:bold;
-background:#d4af37;
-color:#07142d;
-border:none;
-border-radius:10px;
-cursor:pointer;
-text-align:left;
-">
-⚽ TEMPORADA 70
-</button>
+<button onclick="mostrar('${seccion}_temporada70')">⚽ TEMPORADA 70</button>
 
 </div>
 
@@ -1160,7 +1147,11 @@ text-align:left;
 
 if(seccion.endsWith("_palmares")){
 
+let volver=seccion.replace("_palmares","");
+
 contenido.innerHTML=`
+
+<button onclick="mostrar('${volver}')">⬅ VOLVER</button>
 
 <h2>🏆 PALMARÉS</h2>
 
@@ -1172,7 +1163,11 @@ contenido.innerHTML=`
 
 if(seccion.endsWith("_ranking")){
 
+let volver=seccion.replace("_ranking","");
+
 contenido.innerHTML=`
+
+<button onclick="mostrar('${volver}')">⬅ VOLVER</button>
 
 <h2>📊 RANKING</h2>
 
@@ -1185,6 +1180,8 @@ contenido.innerHTML=`
 if(seccion=="copafocos_temporada70"){
 
 contenido.innerHTML=`
+
+<button onclick="mostrar('copafocos')">⬅ VOLVER</button>
 
 <h2>🥇 COPA FOCOS - TEMPORADA 70</h2>
 
@@ -1202,7 +1199,11 @@ border-radius:10px;
 
 if(seccion.endsWith("_temporada70") && seccion!="copafocos_temporada70"){
 
+let volver=seccion.replace("_temporada70","");
+
 contenido.innerHTML=`
+
+<button onclick="mostrar('${volver}')">⬅ VOLVER</button>
 
 <h2>⚽ TEMPORADA 70</h2>
 
