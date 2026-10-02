@@ -983,48 +983,23 @@ if(seccion=="goalunited"){
 
 contenido.innerHTML=`
 
-<h2>🎮 GOALUNITED</h2>
+<div style="display:flex;flex-direction:column;gap:15px;">
 
-<div class="tarjetas">
-
-<div class="tarjeta-numero" onclick="mostrar('nacionales')">
-🏆
-<p>Competiciones Nacionales</p>
-</div>
-
-</div>
-
-`;
-
-}
-
-if(seccion=="nacionales"){
-
-contenido.innerHTML=`
-
-<h2>🏆 COMPETICIONES NACIONALES</h2>
-
-<div class="tarjetas">
-
-<div class="tarjeta-numero">
-🏆
-<p>Liga Focos</p>
-</div>
-
-<div class="tarjeta-numero">
-🏆
-<p>Liga Efecto</p>
-</div>
-
-<div class="tarjeta-numero">
-🥇
-<p>Copa Focos</p>
-</div>
-
-<div class="tarjeta-numero">
-🥇
-<p>Copa Efecto</p>
-</div>
+<button onclick="mostrar('nacionales')" style="
+width:350px;
+padding:20px;
+font-size:22px;
+font-weight:bold;
+background:#d4af37;
+color:#07142d;
+border:none;
+border-radius:12px;
+cursor:pointer;
+text-align:left;
+box-shadow:0 4px 12px rgba(0,0,0,0.3);
+">
+🏆 COMPETICIONES NACIONALES
+</button>
 
 </div>
 
