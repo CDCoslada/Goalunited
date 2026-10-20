@@ -223,72 +223,30 @@ color:#999;
 
 <div id="contenido">
 
-<h2>🔴 I Liga Elite España</h2>
+<h2>🔴 II Liga Elite España</h2>
 
 <p>
-Edición actualmente en disputa.
+Próxima edición en preparación.
 </p>
 
-
 <div class="tarjeta">
-
 <h3>👥 Participantes</h3>
-
-<img src="edicion1-participantes.jpg"
-style="
-width:100%;
-max-width:400px;
-border-radius:15px;
-">
-
+<p>Los participantes de la II edición se anunciarán próximamente.</p>
 </div>
 
 <div class="tarjeta">
-
 <h3>📊 Fase de Grupos</h3>
-
-<img src="edicion1-grupos.jpg"
-style="
-max-width:900px;
-max-height:900px;
-width:auto;
-height:auto;
-display:block;
-margin-left:0;
-border-radius:15px;
-">
-
+<p>La fase de grupos se publicará cuando comience la competición.</p>
 </div>
 
 <div class="tarjeta">
-
 <h3>🎯 Eliminatorias</h3>
-
-<img src="3.Fase eliminatoria.jpg"
-style="
-width:100%;
-max-width:900px;
-display:block;
-margin-left:0;
-border-radius:15px;
-">
-
+<p>El cuadro de eliminatorias se publicará tras la fase de grupos.</p>
 </div>
 
 <div class="tarjeta">
-
 <h3>🏆 Final</h3>
-
-<img src="4.Final.jpg"
-style="
-width:100%;
-max-width:400px;
-height:auto;
-display:block;
-margin-left:0;
-border-radius:15px;
-">
-
+<p>La final se disputará al término de la competición.</p>
 </div>
 
 <footer>
@@ -318,53 +276,72 @@ contenido.innerHTML=`
 
 <h2>🏆 I LIGA ELITE ESPAÑA</h2>
 
+<p>Edición finalizada.</p>
+
 <div class="tarjeta">
-
-<div style="
-display:flex;
-gap:30px;
-flex-wrap:wrap;
-justify-content:center;
-align-items:flex-start;
-">
-
-<div>
-
-<h3>👥 Participantes Oficiales</h3>
-
+<h3>👥 Participantes</h3>
 <img src="edicion1-participantes.jpg" style="
-width:300px;
-max-width:100%;
+width:100%;
+max-width:400px;
+height:auto;
 display:block;
-margin:15px auto;
+margin:0 auto;
 border-radius:15px;
-box-shadow:0 0 15px rgba(0,0,0,0.25);
 ">
-
 </div>
 
-<div>
-
+<div class="tarjeta">
 <h3>📊 Fase de Grupos</h3>
-
 <img src="edicion1-grupos.jpg" style="
-width:850px;
-max-width:100%;
+width:100%;
+max-width:900px;
+height:auto;
 display:block;
-margin:15px auto;
+margin-left:0;
 border-radius:15px;
-box-shadow:0 0 15px rgba(0,0,0,0.25);
 ">
-
 </div>
 
+<div class="tarjeta">
+<h3>🎯 Eliminatorias</h3>
+<img src="3.Fase eliminatoria.jpg" style="
+width:100%;
+max-width:900px;
+height:auto;
+display:block;
+margin-left:0;
+border-radius:15px;
+">
 </div>
 
+<div class="tarjeta">
+<h3>🏆 Final</h3>
+<img src="4.Final.jpg" style="
+width:100%;
+max-width:400px;
+height:auto;
+display:block;
+margin-left:0;
+border-radius:15px;
+">
 </div>
+
+<button onclick="mostrar('ediciones')" style="
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#d4af37;
+font-weight:bold;
+cursor:pointer;
+margin-top:20px;
+">
+⬅ Volver a Ediciones
+</button>
 
 `;
 
 }
+
 if(seccion=="competicion"){
 
 contenido.innerHTML=`
@@ -1029,15 +1006,19 @@ contenido.innerHTML=`
 
 <h2>📚 EDICIONES</h2>
 
-<div class="tarjeta">
+<div class="tarjeta" style="cursor:pointer;" onclick="mostrar('edicion1')">
 
-<h3>🔴 I Liga Elite España</h3>
+<h3>🏆 I Liga Elite España</h3>
 
-<p>
-Edición actualmente en disputa.
-</p>
+<p>Edición finalizada.</p>
 
-<button onclick="mostrar('edicion1')" style="
+<p>🥇 Campeón: Diegotabanera F.C.</p>
+
+<p>🥈 Subcampeón: Malaga Champion</p>
+
+<p>⚽ Resultado de la final: 3-1</p>
+
+<button onclick="event.stopPropagation(); mostrar('edicion1')" style="
 padding:10px 20px;
 border:none;
 border-radius:10px;
@@ -1053,6 +1034,7 @@ Ver edición
 `;
 
 }
+
 if(seccion=="goalunited"){
 
 contenido.innerHTML=`
