@@ -1186,11 +1186,17 @@ margin-bottom:20px;
 
 <button onclick="mostrar('${seccion}_ranking')">📊 RANKING</button>
 
-${seccion=="ligafocos" ? <button onclick="mostrar('ligafocos_temporada70')">⚽ TEMPORADA 70</button>
+${seccion=="ligafocos" ? `
+<button onclick="mostrar('ligafocos_temporada70')">⚽ TEMPORADA 70</button>
 <button onclick="mostrar('ligafocos_temporada69')">⚽ TEMPORADA 69</button>
-<button onclick="mostrar('ligafocos_temporada68')">⚽ TEMPORADA 68</button> : seccion=="ligaefecto" ? <button onclick="mostrar('ligaefecto_temporada70')">⚽ TEMPORADA 70</button>
+<button onclick="mostrar('ligafocos_temporada68')">⚽ TEMPORADA 68</button>
+` : seccion=="ligaefecto" ? `
+<button onclick="mostrar('ligaefecto_temporada70')">⚽ TEMPORADA 70</button>
 <button onclick="mostrar('ligaefecto_temporada69')">⚽ TEMPORADA 69</button>
-<button onclick="mostrar('ligaefecto_temporada68')">⚽ TEMPORADA 68</button> : <button onclick="mostrar('${seccion}_temporada70')">⚽ TEMPORADA 70</button>}
+<button onclick="mostrar('ligaefecto_temporada68')">⚽ TEMPORADA 68</button>
+` : `
+<button onclick="mostrar('${seccion}_temporada70')">⚽ TEMPORADA 70</button>
+`}
 
 </div>
 
