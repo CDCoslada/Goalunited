@@ -1311,6 +1311,107 @@ if(seccion.endsWith("_palmares")){
             </p>
         `;
 
+    } else if(seccion === "ligaefecto_palmares") {
+
+        contenido.innerHTML = `
+            <button onclick="mostrar('${volver}')">⬅ VOLVER</button>
+
+            <h2>🏆 PALMARÉS — LIGA EFECTO</h2>
+
+            <p>Historial de campeones y subcampeones.</p>
+
+            <div style="overflow-x:auto; margin-top:20px;">
+                <table style="
+                    width:100%;
+                    border-collapse:collapse;
+                    text-align:center;
+                    background:#fff;
+                    color:#222;
+                ">
+                    <thead>
+                        <tr style="background:#d4af37; color:#07142d;">
+                            <th style="padding:12px;">Temporada</th>
+                            <th style="padding:12px;">🏆 Campeón</th>
+                            <th style="padding:12px;">🥈 Subcampeón</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr><td>70</td><td>Clube Atlético Mineiro</td><td>Asereje F.C.</td></tr>
+                        <tr><td>69</td><td>Asereje F.C.</td><td>Los Cansaliebres</td></tr>
+                        <tr><td>68</td><td>Los Cansaliebres</td><td>Atlético Chapinería</td></tr>
+                        <tr><td>67</td><td>Atlético Chapinería</td><td>F.C. Carapapa</td></tr>
+                        <tr><td>66</td><td>Atlético Chapinería</td><td>F.C. Carapapa</td></tr>
+                        <tr><td>65</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>64</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>63</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>62</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>61</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>60</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>59</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>58</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>57</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>56</td><td>F.C. Carapapa</td><td>—</td></tr>
+                        <tr><td>55</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>54</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>53</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>52</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>51</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>50</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>49</td><td>Atlético Chapinería</td><td>—</td></tr>
+                        <tr><td>48</td><td>—</td><td>—</td></tr>
+                        <tr><td>47</td><td>—</td><td>—</td></tr>
+                        <tr><td>46</td><td>—</td><td>—</td></tr>
+                        <tr><td>45</td><td>—</td><td>—</td></tr>
+                        <tr><td>44</td><td>—</td><td>—</td></tr>
+                        <tr><td>43</td><td>—</td><td>—</td></tr>
+                        <tr><td>42</td><td>—</td><td>—</td></tr>
+                        <tr><td>41</td><td>—</td><td>—</td></tr>
+                        <tr><td>40</td><td>—</td><td>—</td></tr>
+                        <tr><td>39</td><td>—</td><td>—</td></tr>
+                        <tr><td>38</td><td>—</td><td>—</td></tr>
+                        <tr><td>37</td><td>—</td><td>—</td></tr>
+                        <tr><td>36</td><td>—</td><td>—</td></tr>
+                        <tr><td>35</td><td>—</td><td>—</td></tr>
+                        <tr><td>34</td><td>—</td><td>—</td></tr>
+                        <tr><td>33</td><td>—</td><td>—</td></tr>
+                        <tr><td>32</td><td>—</td><td>—</td></tr>
+                        <tr><td>31</td><td>—</td><td>—</td></tr>
+                        <tr><td>30</td><td>—</td><td>—</td></tr>
+                        <tr><td>29</td><td>—</td><td>—</td></tr>
+                        <tr><td>28</td><td>—</td><td>—</td></tr>
+                        <tr><td>27</td><td>—</td><td>—</td></tr>
+                        <tr><td>26</td><td>—</td><td>—</td></tr>
+                        <tr><td>25</td><td>—</td><td>—</td></tr>
+                        <tr><td>24</td><td>—</td><td>—</td></tr>
+                        <tr><td>23</td><td>—</td><td>—</td></tr>
+                        <tr><td>22</td><td>—</td><td>—</td></tr>
+                        <tr><td>21</td><td>—</td><td>—</td></tr>
+                        <tr><td>20</td><td>—</td><td>—</td></tr>
+                        <tr><td>19</td><td>—</td><td>—</td></tr>
+                        <tr><td>18</td><td>—</td><td>—</td></tr>
+                        <tr><td>17</td><td>—</td><td>—</td></tr>
+                        <tr><td>16</td><td>—</td><td>—</td></tr>
+                        <tr><td>15</td><td>—</td><td>—</td></tr>
+                        <tr><td>14</td><td>—</td><td>—</td></tr>
+                        <tr><td>13</td><td>—</td><td>—</td></tr>
+                        <tr><td>12</td><td>—</td><td>—</td></tr>
+                        <tr><td>11</td><td>—</td><td>—</td></tr>
+                        <tr><td>10</td><td>—</td><td>—</td></tr>
+                        <tr><td>9</td><td>—</td><td>—</td></tr>
+                        <tr><td>8</td><td>—</td><td>—</td></tr>
+                        <tr><td>7</td><td>—</td><td>—</td></tr>
+                        <tr><td>6</td><td>—</td><td>—</td></tr>
+                        <tr><td>5</td><td>—</td><td>—</td></tr>
+                        <tr><td>4</td><td>—</td><td>—</td></tr>
+                        <tr><td>3</td><td>—</td><td>—</td></tr>
+                        <tr><td>2</td><td>—</td><td>—</td></tr>
+                        <tr><td>1</td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        `;
+
     } else {
 
         contenido.innerHTML = `
