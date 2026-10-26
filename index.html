@@ -1203,8 +1203,234 @@ ${seccion=="ligafocos" ? `
 `;
 
 }
+// ========================================
+// HISTÓRICOS DE LAS COPAS
+// ========================================
 
-if(seccion.endsWith("_palmares")){
+const historicoCopaFocos = [
+    [70, "Malaga Champions", "Clube Deportivo Lalín"],
+    [69, "Benimamet Atlético [VLC]", "Zama United"],
+    [68, "Clube Deportivo Lalín", "Targaryen C.F."],
+    [67, "Diegotabanera F.C.", "Saltarines C.F."],
+    [66, "Malaga Champion", "Diegotabanera F.C."],
+    [65, "Clube Deportivo Lalín", "Malaga Champion"],
+    [64, "Malaga Champion", "Basura United FC"],
+    [63, "Club Deportivo 3-34", ""],
+    [62, "United Dragons f.c.", ""],
+    [61, "Basura United FC", ""],
+    [60, "Whisky ZYC", ""],
+    [59, "Malaga Champion", ""],
+    [58, "Malaga Champion", ""],
+    [57, "Furia A.C.", ""],
+    [56, "Nondurmas C.F.", ""],
+    [55, "Canet d'En Berenguer", ""],
+    [54, "United Dragons f.c.", ""],
+    [53, "Noka Alliran", ""],
+    [52, "Clube Deportivo Lalín", ""],
+    [51, "Clube Deportivo Lalín", ""],
+    [50, "Benimamet Atlético [VLC]", ""],
+    [49, "Malaga Champion", ""],
+    [48, "Rápido Bahía, Aldán (GZ)", ""],
+    [47, "Benimamet Atlético [VLC]", ""],
+    [46, "Targaryen C.F.", ""],
+    [45, "restos del mundo", ""],
+    [44, "Real Móstoles F.C.", ""],
+    [43, "SD Patraix", ""],
+    [42, "Hijos de la Tundra", ""],
+    [41, "Hijos de la Tundra", ""],
+    [40, "Real Móstoles F.C.", ""],
+    [39, "Paraliticos de Cafarnaum", ""],
+    [38, "Targaryen C.F.", ""],
+    [37, "Erase una vez!", ""],
+    [36, "Midnight C.F.", ""],
+    [35, "Nondurmas C.F.", ""],
+    [34, "Hijos de la Tundra", ""],
+    [33, "Targaryen C.F.", ""],
+    [32, "Nondurmas C.F.", ""],
+    [31, "restos del mundo", ""],
+    [30, "Ajax de Aspergers FC", ""],
+    [29, "Hijos de la Tundra", ""],
+    [28, "Costa d'en Blanes F.C.", ""],
+    [27, "Poio C.F.", ""],
+    [26, "Big Woman", ""],
+    [25, "Teka Cantabria", ""],
+    [24, "C.F. Allives", ""],
+    [23, "Werbano F.C.", ""],
+    [22, "Ryudecanes Club de Futbol", ""],
+    [21, "Atlético Murcia", ""],
+    [20, "Bixu's Malvadus", ""],
+    [19, "Steepers 1932", ""],
+    [18, "Pablitos Team", ""],
+    [17, "FutbolArte", ""],
+    [16, "Sin Frenos", ""],
+    [15, "Teka Cantabria", ""],
+    [14, "Deportivo Romareda", ""],
+    [13, "Teka Cantabria", ""],
+    [12, "SK Team", ""],
+    [11, "C.F. Allives", ""],
+    [10, "Pericus F.C.", ""],
+    [9, "Bixu's Malvadus", ""],
+    [8, "Abuelas United", ""],
+    [7, "BaRRuFeTS", ""],
+    [6, "Bixu's Malvadus", ""],
+    [5, "Balls Dump F.C.", ""],
+    [4, "Pinchaguas F.C.", ""],
+    [3, "Abuelas United", ""],
+    [2, "Salamero", ""]
+];
+
+const historicoCopaEfecto = [
+    [70, "Palomos Cojos F.C.", "R.C.D. As Pontes"],
+    [69, "Lord Leon Dorado (Chile)", "Lolailos CF"],
+    [68, "Dynamo Churrikistan SK", ""],
+    [67, "Lolailos CF", "Deportivo Catalan"],
+    [66, "Mavs F.C.", "Ibiza Soccer Club"],
+    [65, "R.C.D. As Pontes", "Palomos Cojos F.C"],
+    [64, "Ibiza Soccer Club", "Palomos Cojos F.C"],
+    [63, "Manoguars C.F.", ""],
+    [62, "Valencia C.F.", ""],
+    [61, "C.A Peñarol", ""],
+    [60, "U.D. Pulguense", ""],
+    [59, "U.D. Pulguense", ""],
+    [58, "Ibiza Soccer Club", ""],
+    [57, "Secondigliano USCC", ""],
+    [56, "Siciliana Catania", ""],
+    [55, "Secondigliano USCC", ""],
+    [54, "Ibiza Soccer Club", ""],
+    [53, "Celtic Toledo F.C.", "Ath. Red"],
+    [52, "C.F. Palencia", "Muro de Castellanos"],
+    [51, "Celtic Toledo F.C.", ""],
+    [50, "La Akademia - TDM", ""],
+    [49, "Btta C.F.", ""],
+    [48, "Santillo [CAT]", ""],
+    [47, "", ""],
+    [46, ".A.D. San Jose.", ""],
+    [45, "Metal Attack", ""],
+    [44, "U. D. Pulguense", ""],
+    [43, "Santillo [CAT]", ""],
+    [42, "Metal Attack", ""],
+    [41, "", ""],
+    [40, "Abeljorge CF", ""],
+    [39, "", ""],
+    [38, "", ""],
+    [37, "U. D. Pulguense", ""],
+    [36, "Los Buitres", ""],
+    [35, "", ""],
+    [34, "U. D. Pulguense", ""],
+    [33, "", ""],
+    [32, "U. D. Pulguense", ""],
+    [31, "Metal Attack", ""],
+    [30, "", ""],
+    [29, "U. D. Pulguense", ""],
+    [28, "", ""],
+    [27, "", ""],
+    [26, "U. D. Pulguense", ""],
+    [25, "U. D. Pulguense", ""],
+    [24, "CDB F.C.", ""]
+];
+
+// ========================================
+// FUNCIONES PARA GENERAR LOS RANKINGS
+// ========================================
+
+function generarRankingCopa(historial) {
+    const titulos = {};
+
+    historial.forEach(([temporada, campeon]) => {
+        if (!campeon) return;
+
+        titulos[campeon] = (titulos[campeon] || 0) + 1;
+    });
+
+    return Object.entries(titulos)
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([equipo, cantidad], indice) => `
+            <tr>
+                <td style="padding:10px;">${indice + 1}</td>
+                <td style="padding:10px;">${equipo}</td>
+                <td style="padding:10px;">${cantidad}</td>
+            </tr>
+        `).join("");
+}
+
+function generarPalmaresCopa(historial, nombre, color) {
+    const filas = historial.map(([temporada, campeon, subcampeon]) => `
+        <tr>
+            <td style="padding:10px;">${temporada}</td>
+            <td style="padding:10px;">${campeon || "—"}</td>
+            <td style="padding:10px;">${subcampeon || "—"}</td>
+        </tr>
+    `).join("");
+
+    return `
+        <button onclick="mostrar('${nombre === "FOCOS" ? "copafocos" : "copaefecto"}')">
+            ⬅ VOLVER
+        </button>
+
+        <h2 style="text-align:center;">🏆 PALMARÉS — COPA ${nombre}</h2>
+
+        <p style="text-align:center;">
+            Historial de campeones y subcampeones de la competición.
+        </p>
+
+        <div style="overflow-x:auto; margin-top:20px;">
+            <table style="
+                width:100%;
+                border-collapse:collapse;
+                text-align:center;
+                background:#fff;
+                color:#222;
+            ">
+                <thead>
+                    <tr style="background:${color}; color:${nombre === "FOCOS" ? "#fff" : "#07142d"};">
+                        <th style="padding:12px;">Temporada</th>
+                        <th style="padding:12px;">🏆 Campeón</th>
+                        <th style="padding:12px;">🥈 Subcampeón</th>
+                    </tr>
+                </thead>
+                <tbody>${filas}</tbody>
+            </table>
+        </div>
+    `;
+}
+
+function generarVistaRankingCopa(historial, nombre, color) {
+    return `
+        <button onclick="mostrar('${nombre === "FOCOS" ? "copafocos" : "copaefecto"}')">
+            ⬅ VOLVER
+        </button>
+
+        <h2 style="text-align:center;">🏆 RANKING HISTÓRICO — COPA ${nombre}</h2>
+
+        <p style="text-align:center;">
+            Clasificación histórica ordenada por títulos de copa.
+        </p>
+
+        <div style="overflow-x:auto; margin-top:20px;">
+            <table style="
+                width:100%;
+                border-collapse:collapse;
+                text-align:center;
+                background:#fff;
+                color:#222;
+            ">
+                <thead>
+                    <tr style="background:${color}; color:${nombre === "FOCOS" ? "#fff" : "#07142d"};">
+                        <th style="padding:12px;">Pos.</th>
+                        <th style="padding:12px;">Equipo</th>
+                        <th style="padding:12px;">🏆 Copas ganadas</th>
+                    </tr>
+                </thead>
+                <tbody>${generarRankingCopa(historial)}</tbody>
+            </table>
+        </div>
+    `;
+}
+if(
+    seccion.endsWith("_palmares") &&
+    seccion !== "copafocos_palmares" &&
+    seccion !== "copaefecto_palmares"
+){
 
     let volver = seccion.replace("_palmares","");
 
