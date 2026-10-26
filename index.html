@@ -1672,11 +1672,6 @@ if (seccion === "copaefecto_palmares") {
         "#d4af37"
     );
 }
-if(
-    seccion.endsWith("_ranking") &&
-    seccion !== "copafocos_ranking" &&
-    seccion !== "copaefecto_ranking"
-){
 // ========================================
 // RANKINGS DE LAS COPAS
 // ========================================
@@ -1696,6 +1691,12 @@ if (seccion === "copaefecto_ranking") {
         "#d4af37"
     );
 }
+  if(
+    seccion.endsWith("_ranking") &&
+    seccion !== "copafocos_ranking" &&
+    seccion !== "copaefecto_ranking"
+){
+
 let volver=seccion.replace("_ranking","");
 let esEfecto=(volver==="ligaefecto");
 
