@@ -1202,17 +1202,59 @@ ${seccion=="ligafocos" ? `
 
 if(seccion.endsWith("_palmares")){
 
-let volver=seccion.replace("_palmares","");
+    let volver = seccion.replace("_palmares","");
 
-contenido.innerHTML=`
+    if(seccion === "ligafocos_palmares"){
 
-<button onclick="mostrar('${volver}')">⬅ VOLVER</button>
+        contenido.innerHTML = `
+            <button onclick="mostrar('${volver}')">⬅ VOLVER</button>
 
-<h2>🏆 PALMARÉS</h2>
+            <h2>🏆 PALMARÉS — LIGA FOCOS</h2>
 
-<p>Aquí irá el historial de campeones.</p>
+            <p>Historial de campeones y subcampeones de la competición.</p>
 
-`;
+            <div style="overflow-x:auto; margin-top:20px;">
+                <table style="
+                    width:100%;
+                    border-collapse:collapse;
+                    text-align:center;
+                    background:#fff;
+                    color:#222;
+                    border-radius:10px;
+                    overflow:hidden;
+                ">
+                    <thead>
+                        <tr style="background:#b71c1c; color:white;">
+                            <th style="padding:12px;">Temporada</th>
+                            <th style="padding:12px;">🏆 Campeón</th>
+                            <th style="padding:12px;">🥈 Subcampeón</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaPalmaresFocos">
+                        <tr>
+                            <td colspan="3" style="padding:20px;">
+                                Próximamente, historial de temporadas.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top:15px; font-size:13px; opacity:0.8;">
+                Liga Elite España · Competiciones Nacionales
+            </p>
+        `;
+
+    } else {
+
+        contenido.innerHTML = `
+            <button onclick="mostrar('${volver}')">⬅ VOLVER</button>
+            <h2>🏆 PALMARÉS</h2>
+            <p>Aquí irá el historial de campeones.</p>
+        `;
+
+    }
 
 }
 
