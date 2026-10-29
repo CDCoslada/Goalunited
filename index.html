@@ -94,6 +94,21 @@ transition:0.3s;
 color:#d4af37;
 }
 
+/* Estilo unificado de las tarjetas de competición */
+.boton-competicion{
+ width:100%; max-width:450px; padding:15px; font-size:18px;
+ font-weight:bold; background:linear-gradient(135deg,#f8e7a1,#d4af37);
+ color:#07142d; border:1px solid #b8860b; border-radius:12px;
+ cursor:pointer; display:flex; align-items:center; gap:12px; text-align:left;
+ box-shadow:0 4px 10px rgba(0,0,0,.16); transition:transform .18s,box-shadow .18s;
+}
+.boton-competicion:hover{transform:translateY(-2px);box-shadow:0 7px 15px rgba(0,0,0,.22)}
+.boton-plata{background:linear-gradient(135deg,#ffffff,#d9dfe7 48%,#aab3bf);border-color:#8e98a6;color:#17202c}
+.cabecera-competicion{display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;margin:10px 0 22px}
+.cabecera-competicion img{width:70px;height:70px;object-fit:contain}
+.bloque-botones-competicion{display:flex;flex-direction:column;gap:14px;max-width:450px}
+@media(max-width:600px){.boton-competicion{max-width:100%;font-size:15px}.cabecera-competicion img{width:58px;height:58px}}
+
 .menu-btn img{
 width:26px;
 height:26px;
@@ -346,6 +361,8 @@ border-radius:15px;
 <h3>🏆 Final</h3>
 <p>La final se disputará al término de la competición.</p>
 </div>
+
+</div> <!-- cierre de #contenido -->
 
 <footer>
 
@@ -1306,8 +1323,9 @@ margin-bottom:20px;
 
 <div style="display:flex;flex-direction:column;gap:15px;">
 
-<button onclick="mostrar('ligafocos')" style="
-width:450px;
+<button class="boton-competicion" onclick="mostrar('ligafocos')" style="
+width:100%;
+max-width:450px;
 padding:15px;
 font-size:18px;
 font-weight:bold;
@@ -1324,8 +1342,9 @@ gap:12px;
 LIGA FOCOS
 </button>
 
-<button onclick="mostrar('ligaefecto')" style="
-width:450px;
+<button class="boton-competicion" onclick="mostrar('ligaefecto')" style="
+width:100%;
+max-width:450px;
 padding:15px;
 font-size:18px;
 font-weight:bold;
@@ -1342,8 +1361,9 @@ gap:12px;
 LIGA EFECTO
 </button>
 
-<button onclick="mostrar('copafocos')" style="
-width:450px;
+<button class="boton-competicion" onclick="mostrar('copafocos')" style="
+width:100%;
+max-width:450px;
 padding:15px;
 font-size:18px;
 font-weight:bold;
@@ -1360,8 +1380,9 @@ gap:12px;
 COPA FOCOS
 </button>
 
-<button onclick="mostrar('copaefecto')" style="
-width:450px;
+<button class="boton-competicion" onclick="mostrar('copaefecto')" style="
+width:100%;
+max-width:450px;
 padding:15px;
 font-size:18px;
 font-weight:bold;
@@ -1411,8 +1432,9 @@ flex-direction:column;
 gap:15px;
 ">
 
-<button onclick="mostrar('masteroro')" style="
+<button class="boton-competicion" onclick="mostrar('masteroro')" style="
 width:100%;
+max-width:100%;
 max-width:450px;
 padding:15px;
 font-size:18px;
@@ -1435,8 +1457,9 @@ MASTERS INTERNACIONAL ORO
 
 </button>
 
-<button onclick="mostrar('masterplata')" style="
+<button class="boton-competicion boton-plata" onclick="mostrar('masterplata')" style="
 width:100%;
+max-width:100%;
 max-width:450px;
 padding:15px;
 font-size:18px;
@@ -1459,8 +1482,9 @@ MASTERS INTERNACIONAL PLATA
 
 </button>
 
-<button onclick="mostrar('elitechampions')" style="
+<button class="boton-competicion" onclick="mostrar('elitechampions')" style="
 width:100%;
+max-width:100%;
 max-width:450px;
 padding:15px;
 font-size:18px;
@@ -1498,6 +1522,9 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
 
     let titulo="";
     let trofeo="";
+    let colorBoton=seccion=="masterplata" ? "#c7ced8" : "#d4af37";
+    let colorTexto=seccion=="masterplata" ? "#17202c" : "#07142d";
+    let fondoBoton=seccion=="masterplata" ? "linear-gradient(135deg,#ffffff,#d9dfe7 48%,#aab3bf)" : "linear-gradient(135deg,#f8e7a1,#d4af37)";
 
     if(seccion=="masteroro"){
         titulo="MASTERS INTERNACIONAL ORO";
@@ -1515,8 +1542,8 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
     contenido.innerHTML=`
         <button onclick="mostrar('internacionales')" style="
             padding:10px 20px;
-            background:#d4af37;
-            color:#07142d;
+            background:${fondoBoton};
+            color:${colorTexto};
             border:none;
             border-radius:10px;
             font-weight:bold;
@@ -1524,21 +1551,21 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
             margin-bottom:20px;
         ">⬅ VOLVER A COMPETICIONES INTERNACIONALES</button>
 
-        <div style="display:flex;align-items:center;gap:15px;margin:10px 0 20px;">
+        <div class="cabecera-competicion">
             <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:70px;height:70px;object-fit:contain;">
             <h2 style="margin:0;">${titulo}</h2>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:15px;max-width:450px;">
+        <div class="bloque-botones-competicion">
             <button onclick="mostrar('${seccion}_palmares')" style="
                 padding:15px;font-size:18px;font-weight:bold;
-                background:#d4af37;color:#07142d;border:none;
+                background:${fondoBoton};color:${colorTexto};border:none;
                 border-radius:10px;cursor:pointer;text-align:left;
             ">🏆 PALMARÉS</button>
 
             <button onclick="mostrar('${seccion}_ranking')" style="
                 padding:15px;font-size:18px;font-weight:bold;
-                background:#d4af37;color:#07142d;border:none;
+                background:${fondoBoton};color:${colorTexto};border:none;
                 border-radius:10px;cursor:pointer;text-align:left;
             ">📊 RANKING</button>
         </div>
@@ -1557,6 +1584,8 @@ if(
     let volver=seccion.replace("_palmares","");
     let titulo="";
     let trofeo="";
+    let fondoCabecera=volver=="masterplata" ? "#c7ced8" : "#d4af37";
+    let colorCabecera=volver=="masterplata" ? "#17202c" : "#07142d";
 
     if(volver=="masteroro"){
         titulo="MASTERS INTERNACIONAL ORO";
@@ -1571,7 +1600,7 @@ if(
 
     contenido.innerHTML=`
         <button onclick="mostrar('${volver}')" style="
-            padding:10px 20px;background:#d4af37;color:#07142d;
+            padding:10px 20px;background:${fondoCabecera};color:${colorCabecera};
             border:none;border-radius:10px;font-weight:bold;
             cursor:pointer;margin-bottom:20px;
         ">⬅ VOLVER</button>
@@ -1586,7 +1615,7 @@ if(
         <div style="overflow-x:auto;margin-top:20px;">
             <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
                 <thead>
-                    <tr style="background:#d4af37;color:#07142d;">
+                    <tr style="background:${fondoCabecera};color:${colorCabecera};">
                         <th style="padding:12px;">Edición / Temporada</th>
                         <th style="padding:12px;">🏆 Campeón</th>
                         <th style="padding:12px;">🥈 Subcampeón</th>
@@ -1612,6 +1641,8 @@ if(
     let volver=seccion.replace("_ranking","");
     let titulo="";
     let trofeo="";
+    let fondoCabecera=volver=="masterplata" ? "#c7ced8" : "#d4af37";
+    let colorCabecera=volver=="masterplata" ? "#17202c" : "#07142d";
 
     if(volver=="masteroro"){
         titulo="MASTERS INTERNACIONAL ORO";
@@ -1626,7 +1657,7 @@ if(
 
     contenido.innerHTML=`
         <button onclick="mostrar('${volver}')" style="
-            padding:10px 20px;background:#d4af37;color:#07142d;
+            padding:10px 20px;background:${fondoCabecera};color:${colorCabecera};
             border:none;border-radius:10px;font-weight:bold;
             cursor:pointer;margin-bottom:20px;
         ">⬅ VOLVER</button>
@@ -1641,7 +1672,7 @@ if(
         <div style="overflow-x:auto;margin-top:20px;">
             <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
                 <thead>
-                    <tr style="background:#d4af37;color:#07142d;">
+                    <tr style="background:${fondoCabecera};color:${colorCabecera};">
                         <th style="padding:12px;">Pos.</th>
                         <th style="padding:12px;">Equipo</th>
                         <th style="padding:12px;">🏆 Títulos</th>
@@ -1660,10 +1691,11 @@ if(seccion=="ligafocos" || seccion=="ligaefecto" || seccion=="copafocos" || secc
 
 let titulo="";
 
-if(seccion=="ligafocos") titulo="🏆 LIGA FOCOS";
-if(seccion=="ligaefecto") titulo="🏆 LIGA EFECTO";
-if(seccion=="copafocos") titulo="🥇 COPA FOCOS";
-if(seccion=="copaefecto") titulo="🥇 COPA EFECTO";
+let trofeo="";
+if(seccion=="ligafocos"){ titulo="LIGA FOCOS"; trofeo="Trofliga.png"; }
+if(seccion=="ligaefecto"){ titulo="LIGA EFECTO"; trofeo="Trofliga.png"; }
+if(seccion=="copafocos"){ titulo="COPA FOCOS"; trofeo="Trofcopa.png"; }
+if(seccion=="copaefecto"){ titulo="COPA EFECTO"; trofeo="Trofcopa.png"; }
 
 contenido.innerHTML=`
 
@@ -1680,24 +1712,27 @@ margin-bottom:20px;
 ⬅ VOLVER
 </button>
 
-<h2>${titulo}</h2>
+<div class="cabecera-competicion">
+<img src="${trofeo}" alt="Trofeo ${titulo}">
+<h2 style="margin:0;text-align:center;">${titulo}</h2>
+</div>
 
-<div style="display:flex;flex-direction:column;gap:15px;">
+<div class="bloque-botones-competicion">
 
-<button onclick="mostrar('${seccion}_palmares')">🏆 PALMARÉS</button>
+<button class="boton-competicion" onclick="mostrar('${seccion}_palmares')">🏆 PALMARÉS</button>
 
-<button onclick="mostrar('${seccion}_ranking')">📊 RANKING</button>
+<button class="boton-competicion" onclick="mostrar('${seccion}_ranking')">📊 RANKING</button>
 
 ${seccion=="ligafocos" ? `
-<button onclick="mostrar('ligafocos_temporada70')">⚽ TEMPORADA 70</button>
-<button onclick="mostrar('ligafocos_temporada69')">⚽ TEMPORADA 69</button>
-<button onclick="mostrar('ligafocos_temporada68')">⚽ TEMPORADA 68</button>
+<button class="boton-competicion" onclick="mostrar('ligafocos_temporada70')">⚽ TEMPORADA 70</button>
+<button class="boton-competicion" onclick="mostrar('ligafocos_temporada69')">⚽ TEMPORADA 69</button>
+<button class="boton-competicion" onclick="mostrar('ligafocos_temporada68')">⚽ TEMPORADA 68</button>
 ` : seccion=="ligaefecto" ? `
-<button onclick="mostrar('ligaefecto_temporada70')">⚽ TEMPORADA 70</button>
-<button onclick="mostrar('ligaefecto_temporada69')">⚽ TEMPORADA 69</button>
-<button onclick="mostrar('ligaefecto_temporada68')">⚽ TEMPORADA 68</button>
+<button class="boton-competicion" onclick="mostrar('ligaefecto_temporada70')">⚽ TEMPORADA 70</button>
+<button class="boton-competicion" onclick="mostrar('ligaefecto_temporada69')">⚽ TEMPORADA 69</button>
+<button class="boton-competicion" onclick="mostrar('ligaefecto_temporada68')">⚽ TEMPORADA 68</button>
 ` : `
-<button onclick="mostrar('${seccion}_temporada70')">⚽ TEMPORADA 70</button>
+<button class="boton-competicion" onclick="mostrar('${seccion}_temporada70')">⚽ TEMPORADA 70</button>
 `}
 
 </div>
@@ -2301,7 +2336,7 @@ if(seccion=="ligafocos_temporada70"){
 
 contenido.innerHTML=`
 
-<button onclick="mostrar('ligafocos')" style="
+<button class="boton-competicion" onclick="mostrar('ligafocos')" style="
 padding:10px 20px;
 background:#d4af37;
 color:#07142d;
@@ -2336,7 +2371,7 @@ if(seccion=="ligafocos_temporada69"){
 
 contenido.innerHTML=`
 
-<button onclick="mostrar('ligafocos')" style="
+<button class="boton-competicion" onclick="mostrar('ligafocos')" style="
 padding:10px 20px;
 background:#d4af37;
 color:#07142d;
@@ -2371,7 +2406,7 @@ if(seccion=="ligafocos_temporada68"){
 
 contenido.innerHTML=`
 
-<button onclick="mostrar('ligafocos')" style="
+<button class="boton-competicion" onclick="mostrar('ligafocos')" style="
 padding:10px 20px;
 background:#d4af37;
 color:#07142d;
@@ -2405,7 +2440,7 @@ if(seccion=="ligaefecto_temporada70"){
 
 contenido.innerHTML=`
 
-<button onclick="mostrar('ligaefecto')" style="
+<button class="boton-competicion" onclick="mostrar('ligaefecto')" style="
 padding:10px 20px;
 background:#d4af37;
 color:#07142d;
@@ -2441,7 +2476,7 @@ if(seccion=="ligaefecto_temporada69"){
 
 contenido.innerHTML=`
 
-<button onclick="mostrar('ligaefecto')" style="
+<button class="boton-competicion" onclick="mostrar('ligaefecto')" style="
 padding:10px 20px;
 background:#d4af37;
 color:#07142d;
@@ -2477,7 +2512,7 @@ if(seccion=="ligaefecto_temporada68"){
 
 contenido.innerHTML=`
 
-<button onclick="mostrar('ligaefecto')" style="
+<button class="boton-competicion" onclick="mostrar('ligaefecto')" style="
 padding:10px 20px;
 background:#d4af37;
 color:#07142d;
@@ -2565,3 +2600,6 @@ contenido.innerHTML=`
 
 }  // ← Cierre de function mostrar(seccion)
 </script>
+
+</body>
+</html>
