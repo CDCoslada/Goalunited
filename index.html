@@ -1489,6 +1489,173 @@ ELITE CHAMPIONS LEAGUE
 
 }
   
+
+// ========================================
+// MENÚS DE COMPETICIONES INTERNACIONALES
+// ========================================
+
+if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
+
+    let titulo="";
+    let trofeo="";
+
+    if(seccion=="masteroro"){
+        titulo="MASTERS INTERNACIONAL ORO";
+        trofeo="TrofMastersOro.png";
+    }
+    if(seccion=="masterplata"){
+        titulo="MASTERS INTERNACIONAL PLATA";
+        trofeo="TrofMastersPlata.png";
+    }
+    if(seccion=="elitechampions"){
+        titulo="ELITE CHAMPIONS LEAGUE";
+        trofeo="TrofEliteChampions.png";
+    }
+
+    contenido.innerHTML=`
+        <button onclick="mostrar('internacionales')" style="
+            padding:10px 20px;
+            background:#d4af37;
+            color:#07142d;
+            border:none;
+            border-radius:10px;
+            font-weight:bold;
+            cursor:pointer;
+            margin-bottom:20px;
+        ">⬅ VOLVER A COMPETICIONES INTERNACIONALES</button>
+
+        <div style="display:flex;align-items:center;gap:15px;margin:10px 0 20px;">
+            <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:70px;height:70px;object-fit:contain;">
+            <h2 style="margin:0;">${titulo}</h2>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:15px;max-width:450px;">
+            <button onclick="mostrar('${seccion}_palmares')" style="
+                padding:15px;font-size:18px;font-weight:bold;
+                background:#d4af37;color:#07142d;border:none;
+                border-radius:10px;cursor:pointer;text-align:left;
+            ">🏆 PALMARÉS</button>
+
+            <button onclick="mostrar('${seccion}_ranking')" style="
+                padding:15px;font-size:18px;font-weight:bold;
+                background:#d4af37;color:#07142d;border:none;
+                border-radius:10px;cursor:pointer;text-align:left;
+            ">📊 RANKING</button>
+        </div>
+    `;
+}
+
+// ========================================
+// PALMARÉS DE COMPETICIONES INTERNACIONALES
+// ========================================
+
+if(
+    seccion=="masteroro_palmares" ||
+    seccion=="masterplata_palmares" ||
+    seccion=="elitechampions_palmares"
+){
+    let volver=seccion.replace("_palmares","");
+    let titulo="";
+    let trofeo="";
+
+    if(volver=="masteroro"){
+        titulo="MASTERS INTERNACIONAL ORO";
+        trofeo="TrofMastersOro.png";
+    } else if(volver=="masterplata"){
+        titulo="MASTERS INTERNACIONAL PLATA";
+        trofeo="TrofMastersPlata.png";
+    } else {
+        titulo="ELITE CHAMPIONS LEAGUE";
+        trofeo="TrofEliteChampions.png";
+    }
+
+    contenido.innerHTML=`
+        <button onclick="mostrar('${volver}')" style="
+            padding:10px 20px;background:#d4af37;color:#07142d;
+            border:none;border-radius:10px;font-weight:bold;
+            cursor:pointer;margin-bottom:20px;
+        ">⬅ VOLVER</button>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
+            <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
+            <h2 style="text-align:center;">🏆 PALMARÉS — ${titulo}</h2>
+        </div>
+
+        <p style="text-align:center;">Historial de campeones y subcampeones de la competición.</p>
+
+        <div style="overflow-x:auto;margin-top:20px;">
+            <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
+                <thead>
+                    <tr style="background:#d4af37;color:#07142d;">
+                        <th style="padding:12px;">Edición / Temporada</th>
+                        <th style="padding:12px;">🏆 Campeón</th>
+                        <th style="padding:12px;">🥈 Subcampeón</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" style="padding:14px;">Todavía no se han añadido datos al palmarés.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+// ========================================
+// RANKINGS DE COMPETICIONES INTERNACIONALES
+// ========================================
+
+if(
+    seccion=="masteroro_ranking" ||
+    seccion=="masterplata_ranking" ||
+    seccion=="elitechampions_ranking"
+){
+    let volver=seccion.replace("_ranking","");
+    let titulo="";
+    let trofeo="";
+
+    if(volver=="masteroro"){
+        titulo="MASTERS INTERNACIONAL ORO";
+        trofeo="TrofMastersOro.png";
+    } else if(volver=="masterplata"){
+        titulo="MASTERS INTERNACIONAL PLATA";
+        trofeo="TrofMastersPlata.png";
+    } else {
+        titulo="ELITE CHAMPIONS LEAGUE";
+        trofeo="TrofEliteChampions.png";
+    }
+
+    contenido.innerHTML=`
+        <button onclick="mostrar('${volver}')" style="
+            padding:10px 20px;background:#d4af37;color:#07142d;
+            border:none;border-radius:10px;font-weight:bold;
+            cursor:pointer;margin-bottom:20px;
+        ">⬅ VOLVER</button>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
+            <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
+            <h2 style="text-align:center;">📊 RANKING HISTÓRICO — ${titulo}</h2>
+        </div>
+
+        <p style="text-align:center;">Clasificación histórica ordenada por títulos ganados.</p>
+
+        <div style="overflow-x:auto;margin-top:20px;">
+            <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
+                <thead>
+                    <tr style="background:#d4af37;color:#07142d;">
+                        <th style="padding:12px;">Pos.</th>
+                        <th style="padding:12px;">Equipo</th>
+                        <th style="padding:12px;">🏆 Títulos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3" style="padding:14px;">Todavía no se han añadido datos al ranking.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+
 if(seccion=="ligafocos" || seccion=="ligaefecto" || seccion=="copafocos" || seccion=="copaefecto"){
 
 let titulo="";
@@ -1765,7 +1932,10 @@ function generarVistaRankingCopa(historial, nombre, color) {
 if(
     seccion.endsWith("_palmares") &&
     seccion !== "copafocos_palmares" &&
-    seccion !== "copaefecto_palmares"
+    seccion !== "copaefecto_palmares" &&
+    seccion !== "masteroro_palmares" &&
+    seccion !== "masterplata_palmares" &&
+    seccion !== "elitechampions_palmares"
 ){
 
     let volver = seccion.replace("_palmares","");
@@ -2030,7 +2200,10 @@ if (seccion === "copaefecto_ranking") {
   if(
     seccion.endsWith("_ranking") &&
     seccion !== "copafocos_ranking" &&
-    seccion !== "copaefecto_ranking"
+    seccion !== "copaefecto_ranking" &&
+    seccion !== "masteroro_ranking" &&
+    seccion !== "masterplata_ranking" &&
+    seccion !== "elitechampions_ranking"
 ){
 
 let volver=seccion.replace("_ranking","");
