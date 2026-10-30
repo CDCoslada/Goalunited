@@ -1665,12 +1665,14 @@ if(
         {temporada:1, campeon:"Sv Weststadt (Germany)", subcampeon:"—"}
     ];
 
+    // Usamos imágenes pequeñas de banderas para que se vean correctamente
+    // también en navegadores/sistemas que no muestran los emojis de banderas.
     const banderaPais = {
-        "Vietnam":"🇻🇳", "Spain":"🇪🇸", "Poland":"🇵🇱", "Italy":"🇮🇹",
-        "Brit Isles":"🇬🇧", "Great Britain":"🇬🇧", "Scotland":"🇬🇧",
-        "Belgium":"🇧🇪", "Germany":"🇩🇪", "UAE":"🇦🇪", "Turkey":"🇹🇷",
-        "Greece":"🇬🇷", "Austria":"🇦🇹", "France":"🇫🇷", "Netherlands":"🇳🇱",
-        "Romania":"🇷🇴"
+        "Vietnam":"vn", "Spain":"es", "Poland":"pl", "Italy":"it",
+        "Brit Isles":"gb", "Great Britain":"gb", "Scotland":"gb",
+        "Belgium":"be", "Germany":"de", "UAE":"ae", "Turkey":"tr",
+        "Greece":"gr", "Austria":"at", "France":"fr", "Netherlands":"nl",
+        "Romania":"ro"
     };
 
     function mostrarEquipoConBandera(nombre){
@@ -1679,8 +1681,10 @@ if(
         if(!coincidencia) return nombre;
         const equipo = coincidencia[1].trim();
         const pais = coincidencia[2].trim();
-        const bandera = banderaPais[pais] || "🏳️";
-        return `${bandera} ${equipo}`;
+        const codigo = banderaPais[pais];
+        if(!codigo) return equipo;
+        const bandera = `<img src="https://flagcdn.com/20x15/${codigo}.png" alt="${pais}" title="${pais}" style="width:20px;height:15px;object-fit:cover;vertical-align:middle;margin-right:6px;" loading="lazy">`;
+        return `${bandera}${equipo}`;
     }
 
     if(volver === "masteroro"){
@@ -1746,7 +1750,6 @@ if(
             <p style="text-align:center;">Todavía no se han añadido datos a este apartado.</p>`;
     }
 }
-
 
 if(seccion=="ligafocos" || seccion=="ligaefecto" || seccion=="copafocos" || seccion=="copaefecto"){
 
