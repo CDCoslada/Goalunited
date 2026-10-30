@@ -1692,8 +1692,8 @@ if(
             const filasPalmares = historialMastersOro.map(d => `
                 <tr>
                     <td style="padding:10px;border-bottom:1px solid #ddd;">${d.temporada}</td>
-                    <td style="padding:10px;border-bottom:1px solid #ddd;">${mostrarEquipoConBandera(d.campeon)}</td>
-                    <td style="padding:10px;border-bottom:1px solid #ddd;">${mostrarEquipoConBandera(d.subcampeon)}</td>
+                    <td style="padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;white-space:nowrap;">${mostrarEquipoConBandera(d.campeon)}</td>
+                    <td style="padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;white-space:nowrap;">${mostrarEquipoConBandera(d.subcampeon)}</td>
                 </tr>
             `).join("");
             contenido.innerHTML = `
@@ -1706,7 +1706,7 @@ if(
                 <div style="overflow-x:auto;margin-top:20px;">
                     <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
                         <thead><tr style="background:#d4af37;color:#07142d;">
-                            <th style="padding:12px;">Temporada</th><th style="padding:12px;">🏆 Campeón</th><th style="padding:12px;">🥈 Subcampeón</th>
+                            <th style="padding:12px;">Temporada</th><th style="padding:12px;text-align:left;">🏆 Campeón</th><th style="padding:12px;text-align:left;">🥈 Subcampeón</th>
                         </tr></thead><tbody>${filasPalmares}</tbody>
                     </table>
                 </div>`;
@@ -1721,7 +1721,7 @@ if(
             const ranking = Object.entries(conteo).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0], "es"));
             const filasRanking = ranking.map(([equipo, titulos], i) => `
                 <tr><td style="padding:10px;border-bottom:1px solid #ddd;">${i+1}</td>
-                    <td style="padding:10px;border-bottom:1px solid #ddd;">${mostrarEquipoConBandera(equipo)}</td>
+                    <td style="padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;white-space:nowrap;">${mostrarEquipoConBandera(equipo)}</td>
                     <td style="padding:10px;border-bottom:1px solid #ddd;font-weight:bold;">${titulos}</td></tr>
             `).join("");
             contenido.innerHTML = `
@@ -1734,7 +1734,7 @@ if(
                 <div style="overflow-x:auto;margin-top:20px;">
                     <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
                         <thead><tr style="background:#d4af37;color:#07142d;">
-                            <th style="padding:12px;">Pos.</th><th style="padding:12px;">Equipo</th><th style="padding:12px;">🏆 Campeonatos</th>
+                            <th style="padding:12px;">Pos.</th><th style="padding:12px;text-align:left;">Equipo</th><th style="padding:12px;">🏆 Campeonatos</th>
                         </tr></thead><tbody>${filasRanking}</tbody>
                     </table>
                 </div>`;
