@@ -1573,76 +1573,21 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
 }
 
 // ========================================
-// PALMARÉS DE COMPETICIONES INTERNACIONALES
+// PALMARÉS Y RANKING — COMPETICIONES INTERNACIONALES
 // ========================================
 
 if(
     seccion=="masteroro_palmares" ||
-    seccion=="masterplata_palmares" ||
-    seccion=="elitechampions_palmares"
-){
-    let volver=seccion.replace("_palmares","");
-    let titulo="";
-    let trofeo="";
-    let fondoCabecera=volver=="masterplata" ? "#c7ced8" : "#d4af37";
-    let colorCabecera=volver=="masterplata" ? "#17202c" : "#07142d";
-
-    if(volver=="masteroro"){
-        titulo="MASTERS INTERNACIONAL ORO";
-        trofeo="TrofMastersOro.png";
-    } else if(volver=="masterplata"){
-        titulo="MASTERS INTERNACIONAL PLATA";
-        trofeo="TrofMastersPlata.png";
-    } else {
-        titulo="ELITE CHAMPIONS LEAGUE";
-        trofeo="TrofEliteChampions.png";
-    }
-
-    contenido.innerHTML=`
-        <button onclick="mostrar('${volver}')" style="
-            padding:10px 20px;background:${fondoCabecera};color:${colorCabecera};
-            border:none;border-radius:10px;font-weight:bold;
-            cursor:pointer;margin-bottom:20px;
-        ">⬅ VOLVER</button>
-
-        <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
-            <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
-            <h2 style="text-align:center;">🏆 PALMARÉS — ${titulo}</h2>
-        </div>
-
-        <p style="text-align:center;">Historial de campeones y subcampeones de la competición.</p>
-
-        <div style="overflow-x:auto;margin-top:20px;">
-            <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
-                <thead>
-                    <tr style="background:${fondoCabecera};color:${colorCabecera};">
-                        <th style="padding:12px;">Edición / Temporada</th>
-                        <th style="padding:12px;">🏆 Campeón</th>
-                        <th style="padding:12px;">🥈 Subcampeón</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td colspan="3" style="padding:14px;">Todavía no se han añadido datos al palmarés.</td></tr>
-                </tbody>
-            </table>
-        </div>
-    `;
-}
-
-// ========================================
-// RANKINGS DE COMPETICIONES INTERNACIONALES
-// ========================================
-
-if(
     seccion=="masteroro_ranking" ||
+    seccion=="masterplata_palmares" ||
     seccion=="masterplata_ranking" ||
+    seccion=="elitechampions_palmares" ||
     seccion=="elitechampions_ranking"
 ){
-    let volver=seccion.replace("_ranking","");
-    let titulo="";
-    let trofeo="";
-    let fondoCabecera=volver=="masterplata" ? "#c7ced8" : "#d4af37";
-    let colorCabecera=volver=="masterplata" ? "#17202c" : "#07142d";
+    let esPalmares = seccion.endsWith("_palmares");
+    let volver = seccion.replace(esPalmares ? "_palmares" : "_ranking", "");
+    let titulo = "";
+    let trofeo = "";
 
     if(volver=="masteroro"){
         titulo="MASTERS INTERNACIONAL ORO";
@@ -1655,35 +1600,151 @@ if(
         trofeo="TrofEliteChampions.png";
     }
 
-    contenido.innerHTML=`
-        <button onclick="mostrar('${volver}')" style="
-            padding:10px 20px;background:${fondoCabecera};color:${colorCabecera};
-            border:none;border-radius:10px;font-weight:bold;
-            cursor:pointer;margin-bottom:20px;
-        ">⬅ VOLVER</button>
+    // Historial del Masters Internacional Oro. Los países entre paréntesis
+    // se convierten automáticamente en banderas al mostrarse.
+    const historialMastersOro = [
+        {temporada:60, campeon:"Doremi Floodlights (Vietnam)", subcampeon:"Diegotabarrera F.C. (Spain)"},
+        {temporada:59, campeon:"Rybki Squad (Poland)", subcampeon:"Campioni D'Europa (Italy)"},
+        {temporada:58, campeon:"Bad News NH (Poland)", subcampeon:"Pioneer Girls (Brit Isles)"},
+        {temporada:57, campeon:"fc Madaruanana (Belgium)", subcampeon:"—"},
+        {temporada:56, campeon:"—", subcampeon:"—"},
+        {temporada:55, campeon:"Rybki Squad (Poland)", subcampeon:"—"},
+        {temporada:54, campeon:"KS Lotry II (Poland)", subcampeon:"—"},
+        {temporada:53, campeon:"BvB Dorsten (Germany)", subcampeon:"—"},
+        {temporada:52, campeon:"ABC United (Vietnam)", subcampeon:"—"},
+        {temporada:51, campeon:"rayan (UAE)", subcampeon:"—"},
+        {temporada:50, campeon:"—", subcampeon:"—"},
+        {temporada:49, campeon:"rayan (UAE)", subcampeon:"—"},
+        {temporada:48, campeon:"—", subcampeon:"—"},
+        {temporada:47, campeon:"AC Pikkia (Italy)", subcampeon:"podkowa pacanów (Poland)"},
+        {temporada:46, campeon:"FC Beztalenice (Poland)", subcampeon:"Dandie Dons FC (Scotland)"},
+        {temporada:45, campeon:"Motor Hennigsdorf (Germany)", subcampeon:"Asse-Sainté (France)"},
+        {temporada:44, campeon:"Ton Pentre FC (Great Britain)", subcampeon:"M.y.T.h. (Greece)"},
+        {temporada:43, campeon:"Asdu o4 (Turkey)", subcampeon:"1.FC.Revier 04 (Germany)"},
+        {temporada:42, campeon:"AFC Heiligengeistfeld (Germany)", subcampeon:"Dandie Dons FC (Scotland)"},
+        {temporada:41, campeon:"Jagiellonia Bialystok (Poland)", subcampeon:"Majesteleri (Turkey)"},
+        {temporada:40, campeon:"FC Szakale (Poland)", subcampeon:"Tynewydd Sesh Heads (Brit Isles)"},
+        {temporada:39, campeon:"Unika Lion (Turkey)", subcampeon:"—"},
+        {temporada:38, campeon:"M.y.T.h. (Greece)", subcampeon:"—"},
+        {temporada:37, campeon:"Abknicker Revolution (Austria)", subcampeon:"—"},
+        {temporada:36, campeon:"Ayluga (Turkey)", subcampeon:"—"},
+        {temporada:35, campeon:"LA O LA (Greece)", subcampeon:"—"},
+        {temporada:34, campeon:"Gemlik FC (Turkey)", subcampeon:"—"},
+        {temporada:33, campeon:"Abknicker Eightees (Germany)", subcampeon:"—"},
+        {temporada:32, campeon:"Go Love Yourself GU (France)", subcampeon:"—"},
+        {temporada:31, campeon:"fc Madrana 2 (Netherlands)", subcampeon:"—"},
+        {temporada:30, campeon:"—", subcampeon:"—"},
+        {temporada:29, campeon:"Trick Shot FC (Vietnam)", subcampeon:"—"},
+        {temporada:28, campeon:"Hijos de la Tundra (Spain)", subcampeon:"—"},
+        {temporada:27, campeon:"—", subcampeon:"—"},
+        {temporada:26, campeon:"Go Love Yourself GU (France)", subcampeon:"—"},
+        {temporada:25, campeon:"Azzurri VN FC (Vietnam)", subcampeon:"—"},
+        {temporada:24, campeon:"True Red FC (Vietnam)", subcampeon:"—"},
+        {temporada:23, campeon:"Abknicker Reloaded (Germany)", subcampeon:"—"},
+        {temporada:22, campeon:"QUÁNG BÌNH FC (Vietnam)", subcampeon:"—"},
+        {temporada:21, campeon:"—", subcampeon:"—"},
+        {temporada:20, campeon:"—", subcampeon:"—"},
+        {temporada:19, campeon:"True Red FC (Vietnam)", subcampeon:"—"},
+        {temporada:18, campeon:"Π.Α.Ε ΑΠΙ ΝΙΤΡΟΧΥΟΙ (Greece)", subcampeon:"—"},
+        {temporada:17, campeon:"SilverStars (Vietnam)", subcampeon:"—"},
+        {temporada:16, campeon:"—", subcampeon:"—"},
+        {temporada:15, campeon:"—", subcampeon:"—"},
+        {temporada:14, campeon:"—", subcampeon:"—"},
+        {temporada:13, campeon:"—", subcampeon:"—"},
+        {temporada:12, campeon:"—", subcampeon:"—"},
+        {temporada:11, campeon:"Karabulut F.C ITURI (Turkey)", subcampeon:"—"},
+        {temporada:10, campeon:"—", subcampeon:"—"},
+        {temporada:9, campeon:"Voinicii din Craiova (Romania)", subcampeon:"—"},
+        {temporada:8, campeon:"FC Overrulers (Austria)", subcampeon:"—"},
+        {temporada:7, campeon:"Mad Kickers (Germany)", subcampeon:"—"},
+        {temporada:6, campeon:"Sv Weststadt (Germany)", subcampeon:"—"},
+        {temporada:5, campeon:"Szalone Zaby (Poland)", subcampeon:"—"},
+        {temporada:4, campeon:"La Prospettiva dell'Oppresso (Italy)", subcampeon:"—"},
+        {temporada:3, campeon:"FC Overrulers (Austria)", subcampeon:"—"},
+        {temporada:2, campeon:"Sv Weststadt (Germany)", subcampeon:"—"},
+        {temporada:1, campeon:"Sv Weststadt (Germany)", subcampeon:"—"}
+    ];
 
-        <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
-            <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
-            <h2 style="text-align:center;">📊 RANKING HISTÓRICO — ${titulo}</h2>
-        </div>
+    const banderaPais = {
+        "Vietnam":"🇻🇳", "Spain":"🇪🇸", "Poland":"🇵🇱", "Italy":"🇮🇹",
+        "Brit Isles":"🇬🇧", "Great Britain":"🇬🇧", "Scotland":"🇬🇧",
+        "Belgium":"🇧🇪", "Germany":"🇩🇪", "UAE":"🇦🇪", "Turkey":"🇹🇷",
+        "Greece":"🇬🇷", "Austria":"🇦🇹", "France":"🇫🇷", "Netherlands":"🇳🇱",
+        "Romania":"🇷🇴"
+    };
 
-        <p style="text-align:center;">Clasificación histórica ordenada por títulos ganados.</p>
+    function mostrarEquipoConBandera(nombre){
+        if(!nombre || nombre === "—") return "—";
+        const coincidencia = nombre.match(/^(.*?)\s*\(([^()]*)\)\s*$/);
+        if(!coincidencia) return nombre;
+        const equipo = coincidencia[1].trim();
+        const pais = coincidencia[2].trim();
+        const bandera = banderaPais[pais] || "🏳️";
+        return `${bandera} ${equipo}`;
+    }
 
-        <div style="overflow-x:auto;margin-top:20px;">
-            <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
-                <thead>
-                    <tr style="background:${fondoCabecera};color:${colorCabecera};">
-                        <th style="padding:12px;">Pos.</th>
-                        <th style="padding:12px;">Equipo</th>
-                        <th style="padding:12px;">🏆 Títulos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td colspan="3" style="padding:14px;">Todavía no se han añadido datos al ranking.</td></tr>
-                </tbody>
-            </table>
-        </div>
-    `;
+    if(volver === "masteroro"){
+        if(esPalmares){
+            const filasPalmares = historialMastersOro.map(d => `
+                <tr>
+                    <td style="padding:10px;border-bottom:1px solid #ddd;">${d.temporada}</td>
+                    <td style="padding:10px;border-bottom:1px solid #ddd;">${mostrarEquipoConBandera(d.campeon)}</td>
+                    <td style="padding:10px;border-bottom:1px solid #ddd;">${mostrarEquipoConBandera(d.subcampeon)}</td>
+                </tr>
+            `).join("");
+            contenido.innerHTML = `
+                <button onclick="mostrar('masteroro')" style="padding:10px 20px;background:#d4af37;color:#07142d;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:20px;">⬅ VOLVER</button>
+                <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
+                    <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
+                    <h2 style="text-align:center;">🏆 PALMARÉS — ${titulo}</h2>
+                </div>
+                <p style="text-align:center;">Historial de campeones y subcampeones de la competición.</p>
+                <div style="overflow-x:auto;margin-top:20px;">
+                    <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
+                        <thead><tr style="background:#d4af37;color:#07142d;">
+                            <th style="padding:12px;">Temporada</th><th style="padding:12px;">🏆 Campeón</th><th style="padding:12px;">🥈 Subcampeón</th>
+                        </tr></thead><tbody>${filasPalmares}</tbody>
+                    </table>
+                </div>`;
+        } else {
+            const conteo = {};
+            historialMastersOro.forEach(d => {
+                if(d.campeon && d.campeon !== "—"){
+                    const nombre = d.campeon;
+                    conteo[nombre] = (conteo[nombre] || 0) + 1;
+                }
+            });
+            const ranking = Object.entries(conteo).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0], "es"));
+            const filasRanking = ranking.map(([equipo, titulos], i) => `
+                <tr><td style="padding:10px;border-bottom:1px solid #ddd;">${i+1}</td>
+                    <td style="padding:10px;border-bottom:1px solid #ddd;">${mostrarEquipoConBandera(equipo)}</td>
+                    <td style="padding:10px;border-bottom:1px solid #ddd;font-weight:bold;">${titulos}</td></tr>
+            `).join("");
+            contenido.innerHTML = `
+                <button onclick="mostrar('masteroro')" style="padding:10px 20px;background:#d4af37;color:#07142d;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:20px;">⬅ VOLVER</button>
+                <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
+                    <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
+                    <h2 style="text-align:center;">📊 RANKING HISTÓRICO — ${titulo}</h2>
+                </div>
+                <p style="text-align:center;">Clasificación histórica ordenada por títulos ganados.</p>
+                <div style="overflow-x:auto;margin-top:20px;">
+                    <table style="width:100%;border-collapse:collapse;text-align:center;background:#fff;color:#222;">
+                        <thead><tr style="background:#d4af37;color:#07142d;">
+                            <th style="padding:12px;">Pos.</th><th style="padding:12px;">Equipo</th><th style="padding:12px;">🏆 Campeonatos</th>
+                        </tr></thead><tbody>${filasRanking}</tbody>
+                    </table>
+                </div>`;
+        }
+    } else {
+        // Se conservan los apartados de Plata y Champions sin alterar sus datos.
+        contenido.innerHTML = `
+            <button onclick="mostrar('${volver}')" style="padding:10px 20px;background:#d4af37;color:#07142d;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:20px;">⬅ VOLVER</button>
+            <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
+                <img src="${trofeo}" alt="Trofeo ${titulo}" style="width:65px;height:65px;object-fit:contain;">
+                <h2 style="text-align:center;">${esPalmares ? "🏆 PALMARÉS" : "📊 RANKING HISTÓRICO"} — ${titulo}</h2>
+            </div>
+            <p style="text-align:center;">Todavía no se han añadido datos a este apartado.</p>`;
+    }
 }
 
 
