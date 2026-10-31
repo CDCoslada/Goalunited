@@ -388,6 +388,92 @@ i.src=c+'&LANG='+encodeURIComponent(navigator.language)+'&RES='+screen.width+'x'
 
 <script>
 
+// Escudos en tablas de competiciones nacionales
+function aplicarEscudosNacionales(seccion) {
+    const seccionesNacionales = /^(ligafocos|ligaefecto|copafocos|copaefecto)(_(palmares|ranking|temporada\d+))?$/;
+    if (!seccionesNacionales.test(seccion)) return;
+
+    const mapaEscudos = [
+        [/clube deportivo lal[ií]n|lalin/i, "Lalin.png"],
+        [/m[aá]laga champion/i, "Malagachampion.png"],
+        [/diegotabanera/i, "Diegotabanera.png"],
+        [/targaryen/i, "Targaryen.png"],
+        [/cubillos/i, "Cubillos.png"],
+        [/furia a\.c\.|furia roja/i, "Athred.png"],
+        [/benim[aà]met|benimanet/i, "Benimanet.png"],
+        [/zama united/i, "Zama.png"],
+        [/hijos de la tundra/i, "Halaoviedo.png"],
+        [/real mancajes/i, "MavsFC.png"],
+        [/real m[oó]stoles/i, "Mostoles.png"],
+        [/restos del mundo/i, "Legends.png"],
+        [/teka cantabria/i, "SDRiazor.png"],
+        [/erase una vez|erase una hez/i, "Caracolesdelnebraska.png"],
+        [/ferpectamente/i, "Athred.png"],
+        [/atl[eé]tico murcia|atl[eé]tico madrileño/i, "Atletico.png"],
+        [/c\.f\. allives/i, "Athred.png"],
+        [/javivove/i, "Athred.png"],
+        [/real español/i, "Athred.png"],
+        [/kathmandu/i, "Athred.png"],
+        [/n\.y\. cosmos/i, "Athred.png"],
+        [/sin frenos/i, "Athred.png"],
+        [/pericus/i, "Athred.png"],
+        [/pablitos team/i, "Athred.png"],
+        [/peloteros/i, "Athred.png"],
+        [/salamero/i, "Athred.png"],
+        [/euskal athletic/i, "Athred.png"],
+        [/r\.c\.d\. as pontes/i, "Pontes.png"],
+        [/lord leon dorado/i, "Lordleon.png"],
+        [/u\.?\s*d\.? pulguense/i, "Pulguense.png"],
+        [/celtic toledo/i, "Celtictoledo.png"],
+        [/metal attack/i, "Athred.png"],
+        [/valencia c\.f/i, "Atletico.png"],
+        [/abeljorge/i, "Athred.png"],
+        [/secondigliano/i, "Secondigliano.png"],
+        [/a\.?\s*d\.? san jose/i, "ADSanjose.png"],
+        [/palomos cojos/i, "Palomos.png"],
+        [/c\.f\. palencia/i, "Palencia.png"],
+        [/ibiza soccer/i, "Athred.png"],
+        [/tai pie|never.*loser/i, "Athred.png"],
+        [/muro de castellanos/i, "Athred.png"],
+        [/santillo/i, "Athred.png"],
+        [/m\s*a\s*h\s*o\s*n\s*e\s*s/i, "Athred.png"]
+    ];
+
+    document.querySelectorAll("#contenido table tbody tr").forEach(fila => {
+        const celdas = Array.from(fila.querySelectorAll("td"));
+        celdas.forEach((celda, indice) => {
+            if (celda.querySelector("img.escudo-equipo-tabla")) return;
+            const nombre = celda.textContent.trim();
+            if (!nombre || nombre === "—" || /^\d+$/.test(nombre) || /^(🥇|🥈|🥉)?\s*\d+$/.test(nombre)) return;
+            // En palmarés la temporada está en la primera columna; en ranking se omite la posición.
+            if (indice === 0 && (/palmares/.test(seccion) || /ranking/.test(seccion))) return;
+            if (/^(pos\.?|temporada|equipo|campe[oó]n|subcampe[oó]n|🏆|🥈)/i.test(nombre)) return;
+
+            let archivo = "Cubillos.png";
+            for (const [patron, imagen] of mapaEscudos) {
+                if (patron.test(nombre)) { archivo = imagen; break; }
+            }
+            const contenedor = document.createElement("span");
+            contenedor.style.cssText = "display:inline-flex;align-items:center;justify-content:flex-start;gap:7px;min-width:0;text-align:left;white-space:nowrap;";
+            const escudo = document.createElement("img");
+            escudo.className = "escudo-equipo-tabla";
+            escudo.src = archivo;
+            escudo.alt = "";
+            escudo.width = 22;
+            escudo.height = 22;
+            escudo.style.cssText = "width:22px;height:22px;object-fit:contain;flex:0 0 22px;vertical-align:middle;";
+            escudo.onerror = function () { this.onerror = null; this.src = "Cubillos.png"; };
+            const texto = document.createElement("span");
+            texto.textContent = nombre;
+            contenedor.append(escudo, texto);
+            celda.textContent = "";
+            celda.style.textAlign = "left";
+            celda.style.paddingLeft = "10px";
+            celda.appendChild(contenedor);
+        });
+    });
+}
+
 function mostrar(seccion){
 
 let contenido=document.getElementById("contenido");
@@ -2730,6 +2816,8 @@ contenido.innerHTML=`
 `;
 
 }
+
+    aplicarEscudosNacionales(seccion);
 
 }  // ← Cierre de function mostrar(seccion)
 </script>
