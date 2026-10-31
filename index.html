@@ -2098,11 +2098,20 @@ function generarRankingCopa(historial) {
     historial.forEach(([temporada, campeon]) => {
         if (!campeon) return;
 
-        titulos[campeon] = (titulos[campeon] || 0) + 1;
+        const nombre = campeon.trim();
+
+        // No contar temporadas sin disputar como títulos.
+        if (
+            !nombre ||
+            nombre === "—" ||
+            /^no disputada$/i.test(nombre)
+        ) return;
+
+        titulos[nombre] = (titulos[nombre] || 0) + 1;
     });
 
     return Object.entries(titulos)
-        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "es"))
         .map(([equipo, cantidad], indice) => `
             <tr>
                 <td style="padding:10px;">${indice + 1}</td>
@@ -2113,13 +2122,25 @@ function generarRankingCopa(historial) {
 }
 
 function generarPalmaresCopa(historial, nombre, color) {
-    const filas = historial.map(([temporada, campeon, subcampeon]) => `
-        <tr>
-            <td style="padding:10px;">${temporada}</td>
-            <td style="padding:10px;">${campeon || "—"}</td>
-            <td style="padding:10px;">${subcampeon || "—"}</td>
-        </tr>
-    `).join("");
+    const filas = historial.map(([temporada, campeon, subcampeon]) => {
+        const campeonVisible =
+            !campeon || /^no disputada$/i.test(campeon.trim())
+                ? "—"
+                : campeon;
+
+        const subcampeonVisible =
+            !subcampeon || /^no disputada$/i.test(subcampeon.trim())
+                ? "—"
+                : subcampeon;
+
+        return `
+            <tr>
+                <td style="padding:10px;">${temporada}</td>
+                <td style="padding:10px;">${campeonVisible}</td>
+                <td style="padding:10px;">${subcampeonVisible}</td>
+            </tr>
+        `;
+    }).join("");
 
     return `
         <button onclick="mostrar('${nombre === "FOCOS" ? "copafocos" : "copaefecto"}')">
