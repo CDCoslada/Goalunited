@@ -1681,18 +1681,54 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
         </div>
 
         <div class="bloque-botones-competicion">
-            <button onclick="mostrar('${seccion}_palmares')" style="
-                padding:15px;font-size:18px;font-weight:bold;
-                background:${fondoBoton};color:${colorTexto};border:none;
-                border-radius:10px;cursor:pointer;text-align:left;
-            ">🏆 PALMARÉS</button>
+            ${seccion=="elitechampions" ? `
+                ${[19,18,17,16,15,14,12,11,10,8,7,6,5].map(temporada => `
+                    <button class="boton-competicion" onclick="mostrar('elitechampions_temporada${temporada}')">
+                        🏆 TEMPORADA ${temporada}
+                    </button>
+                `).join("")}
+            ` : `
+                <button onclick="mostrar('${seccion}_palmares')" style="
+                    padding:15px;font-size:18px;font-weight:bold;
+                    background:${fondoBoton};color:${colorTexto};border:none;
+                    border-radius:10px;cursor:pointer;text-align:left;
+                ">🏆 PALMARÉS</button>
 
-            <button onclick="mostrar('${seccion}_ranking')" style="
-                padding:15px;font-size:18px;font-weight:bold;
-                background:${fondoBoton};color:${colorTexto};border:none;
-                border-radius:10px;cursor:pointer;text-align:left;
-            ">📊 RANKING</button>
+                <button onclick="mostrar('${seccion}_ranking')" style="
+                    padding:15px;font-size:18px;font-weight:bold;
+                    background:${fondoBoton};color:${colorTexto};border:none;
+                    border-radius:10px;cursor:pointer;text-align:left;
+                ">📊 RANKING</button>
+            `}
         </div>
+    `;
+}
+
+// Imágenes de cada temporada de la Elite Champions League
+const temporadasEliteChampions = [19,18,17,16,15,14,12,11,10,8,7,6,5];
+
+const temporadaEliteSeleccionada = seccion.match(/^elitechampions_temporada(\d+)$/);
+if (temporadaEliteSeleccionada && temporadasEliteChampions.includes(Number(temporadaEliteSeleccionada[1]))) {
+    const temporada = Number(temporadaEliteSeleccionada[1]);
+    contenido.innerHTML = `
+        <button onclick="mostrar('elitechampions')" style="
+            padding:10px 20px;
+            background:linear-gradient(135deg,#f8e7a1,#d4af37);
+            color:#07142d;
+            border:none;
+            border-radius:10px;
+            font-weight:bold;
+            cursor:pointer;
+            margin-bottom:20px;
+        ">⬅ VOLVER A TEMPORADAS</button>
+        <img src="ECL${temporada}.PNG" alt="Elite Champions League - Temporada ${temporada}" style="
+            display:block;
+            width:100%;
+            max-width:100%;
+            height:auto;
+            margin:0 auto;
+            border-radius:12px;
+        ">
     `;
 }
 
