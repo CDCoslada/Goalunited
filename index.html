@@ -332,6 +332,10 @@ color:#999;
 <img src="Legends.png">
 <span>GOALUNITED</span>
 </button>
+<button class="menu-btn" onclick="mostrar('halloffame')">
+<img src="trofeo.png">
+<span>HALL OF FAME</span>
+</button>
 
 </nav>
 
@@ -1426,6 +1430,66 @@ box-shadow:0 4px 12px rgba(0,0,0,0.3);
 
 `;
 
+}
+
+if(seccion=="halloffame"){
+contenido.innerHTML=`
+<h2>🏆 HALL OF FAME</h2>
+<p style="text-align:center;">Archivo histórico de los equipos más laureados de GoalUnited.</p>
+<div style="display:flex;flex-direction:column;align-items:center;gap:20px;margin:35px auto;max-width:560px;">
+<button onclick="mostrar('halloffame_nacional')" style="width:100%;padding:20px;font-size:22px;font-weight:bold;background:#d4af37;color:#07142d;border:0;border-radius:12px;cursor:pointer;text-align:left;box-shadow:0 4px 12px rgba(0,0,0,.3);">🇪🇸 NACIONAL</button>
+<button onclick="mostrar('halloffame_internacional')" style="width:100%;padding:20px;font-size:22px;font-weight:bold;background:#d4af37;color:#07142d;border:0;border-radius:12px;cursor:pointer;text-align:left;box-shadow:0 4px 12px rgba(0,0,0,.3);">🌍 INTERNACIONAL</button>
+</div>
+`;
+}
+
+if(seccion=="halloffame_nacional"){
+contenido.innerHTML=`
+<h2>🇪🇸 HALL OF FAME — NACIONAL</h2>
+<p style="text-align:center;">Equipos españoles incorporados al archivo histórico.</p>
+<div class="tarjeta" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+<img src="Tundra.PNG" alt="Escudo de Hijos de la Tundra" style="width:115px;height:115px;object-fit:contain;">
+<div style="flex:1;min-width:190px;">
+<h3 style="margin-top:0;">Hijos de la Tundra</h3>
+<p>🇪🇸 España · Nacional</p>
+<p><strong>12 títulos oficiales</strong></p>
+<button onclick="mostrar('halloffame_tundra')" style="padding:11px 18px;background:#d4af37;color:#07142d;border:0;border-radius:8px;font-weight:bold;cursor:pointer;">Ver palmarés del equipo</button>
+</div>
+</div>
+<button onclick="mostrar('halloffame')" style="padding:10px 16px;background:#d4af37;color:#07142d;border:0;border-radius:8px;font-weight:bold;cursor:pointer;">⬅ Volver al Hall of Fame</button>
+`;
+}
+
+if(seccion=="halloffame_internacional"){
+contenido.innerHTML=`
+<h2>🌍 HALL OF FAME — INTERNACIONAL</h2>
+<div class="tarjeta" style="text-align:center;">Próximamente se incorporarán equipos internacionales al archivo histórico.</div>
+<button onclick="mostrar('halloffame')" style="padding:10px 16px;background:#d4af37;color:#07142d;border:0;border-radius:8px;font-weight:bold;cursor:pointer;">⬅ Volver al Hall of Fame</button>
+`;
+}
+
+if(seccion=="halloffame_tundra"){
+contenido.innerHTML=`
+<h2>🏆 HIJOS DE LA TUNDRA</h2>
+<div class="tarjeta" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+  <img src="Tundra.PNG" alt="Escudo de Hijos de la Tundra" style="width:125px;height:125px;object-fit:contain;">
+  <div><h3>🇪🇸 España</h3><p><strong>Total:</strong> 12 títulos</p></div>
+</div>
+<h3 style="text-align:center;">Palmarés por competición</h3>
+<div class="tarjeta" style="display:flex;align-items:center;gap:15px;">
+  <img src="Trofliga.png" alt="Liga Focos" style="width:65px;height:65px;object-fit:contain;">
+  <div><strong>LIGA FOCOS</strong><p>7 títulos · Temporadas 47, 44, 42, 41, 39, 37 y 36</p></div>
+</div>
+<div class="tarjeta" style="display:flex;align-items:center;gap:15px;">
+  <img src="Trofcopa.png" alt="Copa Focos" style="width:65px;height:65px;object-fit:contain;">
+  <div><strong>COPA FOCOS</strong><p>4 títulos · Temporadas 42, 41, 34 y 29</p></div>
+</div>
+<div class="tarjeta" style="display:flex;align-items:center;gap:15px;">
+  <img src="TrofMastersPlata.png" alt="Masters Internacional Plata" style="width:65px;height:65px;object-fit:contain;">
+  <div><strong>MASTERS INTERNACIONAL PLATA</strong><p>1 título · Temporada 28</p></div>
+</div>
+<button onclick="mostrar('halloffame_nacional')" style="padding:10px 16px;background:#d4af37;color:#07142d;border:0;border-radius:8px;font-weight:bold;cursor:pointer;">⬅ Volver a Nacional</button>
+`;
 }
 
 if(seccion=="nacionales"){
