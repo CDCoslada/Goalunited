@@ -1490,7 +1490,7 @@ const hofEquiposNacionales = [
   titulos:[{n:4,t:"LIGA FOCOS",img:"Trofliga.png",temp:"61, 48, 46 y 43"},{n:3,t:"COPA FOCOS",img:"Trofcopa.png",temp:"69, 50 y 47"}]},
  {id:"lalin", nombre:"Clube Deportivo Lalín", escudo:"Lalin.png", servidor:"FOCOS", total:6,
   titulos:[{n:2,t:"LIGA FOCOS",img:"Trofliga.png",temp:"70 y 58"},{n:4,t:"COPA FOCOS",img:"Trofcopa.png",temp:"68, 65, 52 y 51"}]},
- {id:"diego", nombre:"Diegotabanera F.C.", escudo:"Diegotabanera.png", servidor:"FOCOS", total:4, excepcion:true,
+ {id:"diego", nombre:"Diegotabanera F.C.", escudo:"Diegotabanera.png", servidor:"FOCOS", total:4,
   titulos:[{n:3,t:"LIGA FOCOS",img:"Trofliga.png",temp:"68, 67 y 66"},{n:1,t:"COPA FOCOS",img:"Trofcopa.png",temp:"67"}]},
  {id:"pulguense", nombre:"U.D. Pulguense", escudo:"Pulguense.png", servidor:"EFECTO", total:21,
   titulos:[{n:12,t:"LIGA EFECTO",img:"Trofliga.png",temp:"63, 56, 52, 51, 50, 48, 44, 41, 40, 37, 33 y 32"},{n:9,t:"COPA EFECTO",img:"Trofcopa.png",temp:"60, 59, 44, 37, 34, 32, 29, 26 y 25"}]},
@@ -1506,8 +1506,8 @@ function hofTarjetaEquipo(e){
  return `<div class="hof-equipo-card">
   <img src="${e.escudo}" alt="Escudo de ${e.nombre}" onerror="this.style.opacity='.35';this.alt='Escudo no disponible';">
   <h3>${e.nombre}</h3>
-  <p><strong>Servidor ${e.servidor}</strong></p>
-  <p><strong>${e.total} títulos oficiales${e.excepcion?' · EXCEPCIÓN':''}</strong></p>
+  <p class="hof-pais"><span class="hof-bandera-es" aria-label="Bandera de España"><span></span><span></span><span></span></span><span>ESPAÑA</span></p><p><strong>Servidor ${e.servidor}</strong></p>
+  <p><strong>${e.total} títulos oficiales</strong></p>
   <button class="hof-btn" onclick="mostrar('halloffame_${e.id}')">VER PALMARÉS</button>
  </div>`;
 }
@@ -1528,7 +1528,7 @@ if(seccion=="halloffame_nacional"){
  const focos=hofEquiposNacionales.filter(e=>e.servidor==="FOCOS");
  const efecto=hofEquiposNacionales.filter(e=>e.servidor==="EFECTO");
  contenido.innerHTML=`
- <h2>🇪🇸 HALL OF FAME — NACIONAL</h2>
+ <h2><span class="hof-bandera-es" aria-label="Bandera de España"><span></span><span></span><span></span></span> HALL OF FAME — NACIONAL</h2>
  <p class="hof-intro" style="color:#555;">Equipos españoles incorporados al archivo histórico. Los servidores Focos y Efecto se muestran por separado.</p>
  <h3 style="margin-top:25px;padding:12px;background:#b71c1c;color:white;border-radius:10px;text-align:center;">SERVIDOR FOCOS</h3>
  <div class="hof-equipos">${focos.map(hofTarjetaEquipo).join("")}</div>
@@ -1551,7 +1551,7 @@ if(hofEquipoSeleccionado){
  <h2>🏆 HALL OF FAME — EQUIPO</h2>
  <div class="hof-cabecera-equipo">
   <img src="${e.escudo}" alt="Escudo de ${e.nombre}" onerror="this.style.opacity='.35';this.alt='Escudo no disponible';">
-  <div><h3>${e.nombre.toUpperCase()}</h3><p class="hof-pais"><strong>ESPAÑA · SERVIDOR ${e.servidor}</strong></p><p class="hof-total"><strong>${e.total} títulos oficiales${e.excepcion?' · EXCEPCIÓN AL CRITERIO DE ACCESO':''}</strong></p></div>
+  <div><h3>${e.nombre.toUpperCase()}</h3><p class="hof-pais"><span class="hof-bandera-es" aria-label="Bandera de España"><span></span><span></span><span></span></span><span>ESPAÑA · SERVIDOR ${e.servidor}</span></p><p class="hof-total"><strong>${e.total} títulos oficiales${e.excepcion?' · EXCEPCIÓN AL CRITERIO DE ACCESO':''}</strong></p></div>
  </div>
  <h2 style="text-align:center;">PALMARÉS POR COMPETICIÓN</h2>
  <div class="hof-titulos-grid">${e.titulos.map(t=>`<div class="hof-titulo-card"><div class="hof-cantidad">${t.n} ×</div><img src="${t.img}" alt="Trofeo ${t.t}"><strong>${t.t}</strong><div class="hof-temporadas">Temporadas ${t.temp}</div></div>`).join("")}</div>
