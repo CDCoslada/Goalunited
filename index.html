@@ -220,6 +220,7 @@ grid-template-columns:1fr;
 .hof-bandera-es{display:inline-flex;flex-direction:column;width:34px;height:22px;overflow:hidden;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.35);flex:0 0 34px}
 .hof-bandera-es span:nth-child(1),.hof-bandera-es span:nth-child(3){background:#AA151B;flex:1}
 .hof-bandera-es span:nth-child(2){background:#F1BF00;flex:2}
+.hof-bandera-pl{display:inline-flex;flex-direction:column;width:34px;height:22px;overflow:hidden;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.35);flex:0 0 34px;vertical-align:middle}.hof-bandera-pl span:first-child{background:#fff;flex:1}.hof-bandera-pl span:last-child{background:#dc143c;flex:1}
 
 /* HALL OF FAME: presentación visual azul y dorada */
 .hof-portada{margin:0 auto 28px;max-width:1000px;text-align:center;padding:8px 12px 0}
@@ -371,10 +372,10 @@ color:#999;
 </button>
 <button class="menu-btn" onclick="mostrar('goalunited')">
 <img src="Legends.png">
-<span>COMPETICIONES GOALUNITED</span>
+<span>GOALUNITED</span>
 </button>
 <button class="menu-btn" onclick="mostrar('halloffame')">
-<img src="Hall.png">
+<img src="trofeo.png">
 <span>HALL OF FAME</span>
 </button>
 
@@ -1502,6 +1503,29 @@ const hofEquiposNacionales = [
   titulos:[{n:3,t:"LIGA EFECTO",img:"Trofliga.png",temp:"58, 43 y 42"},{n:2,t:"COPA EFECTO",img:"Trofcopa.png",temp:"53 y 51"}]}
 ];
 
+// Equipos internacionales del Hall of Fame. Los títulos polacos se
+// distinguen de las competiciones de los servidores españoles Focos y Efecto.
+const hofEquiposInternacionales = [
+ {id:"rybki", nombre:"Rybki Squad", pais:"POLONIA", total:14,
+  titulos:[
+   {n:3,t:"LIGA FOCOS — POLONIA",img:"Trofliga.png",temp:"68, 69 y 70"},
+   {n:6,t:"COPA FOCOS — POLONIA",img:"Trofcopa.png",temp:"54, 60, 63, 64, 66 y 68"},
+   {n:2,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"55 y 59"},
+   {n:1,t:"MASTERS INTERNACIONAL PLATA",img:"TrofMastersPlata.png",temp:"56"},
+   {n:2,t:"ELITE CHAMPIONS LEAGUE",img:"TrofEliteChampions.png",temp:"17 y 18"}
+  ]}
+];
+
+function hofTarjetaInternacional(e){
+ return `<div class="hof-equipo-card">
+  <div style="display:flex;justify-content:center;margin:0 auto 14px;"><span class="hof-bandera-pl" aria-label="Bandera de Polonia"><span></span><span></span></span></div>
+  <h3>${e.nombre}</h3>
+  <p class="hof-pais">${e.pais}</p>
+  <p><strong>${e.total} títulos oficiales</strong></p>
+  <button class="hof-btn" onclick="mostrar('halloffame_${e.id}')">VER PALMARÉS</button>
+ </div>`;
+}
+
 function hofTarjetaEquipo(e){
  return `<div class="hof-equipo-card">
   <img src="${e.escudo}" alt="Escudo de ${e.nombre}" onerror="this.style.opacity='.35';this.alt='Escudo no disponible';">
@@ -1518,11 +1542,7 @@ contenido.innerHTML=`
 <div class="hof-masthead"><h2>HALL OF FAME</h2><p>LIGA ELITE ESPAÑA · ARCHIVO HISTÓRICO</p></div>
 <p class="hof-intro">El salón de la fama de GoalUnited: un reconocimiento a los equipos que han marcado la historia.</p>
 <div class="hof-categorias">
-<button class="hof-categoria" onclick="mostrar('halloffame_nacional')">
-<span class="hof-bandera-es"><span></span><span></span><span></span></span>
-<strong>NACIONAL</strong>
-<span>Consultar equipos españoles</span>
-</button>
+<button class="hof-categoria" onclick="mostrar('halloffame_nacional')"><span class="simbolo">🇪🇸</span><strong>NACIONAL</strong><span>Consultar equipos españoles</span></button>
 <button class="hof-categoria" onclick="mostrar('halloffame_internacional')"><span class="simbolo">🌍</span><strong>INTERNACIONAL</strong><span>Consultar equipos internacionales</span></button>
 </div>
 </div>`;
@@ -1542,10 +1562,26 @@ if(seccion=="halloffame_nacional"){
 }
 
 if(seccion=="halloffame_internacional"){
-contenido.innerHTML=`
-<h2>🌍 HALL OF FAME — INTERNACIONAL</h2>
-<div class="tarjeta" style="text-align:center;padding:35px;">Próximamente se incorporarán equipos internacionales al archivo histórico.</div>
-<button class="hof-btn" onclick="mostrar('halloffame')">⬅ VOLVER AL HALL OF FAME</button>`;
+ const internacionales=hofEquiposInternacionales;
+ contenido.innerHTML=`
+ <h2>🌍 HALL OF FAME — INTERNACIONAL</h2>
+ <p class="hof-intro" style="color:#555;">Equipos internacionales reconocidos por sus títulos nacionales e internacionales.</p>
+ <div class="hof-equipos">${internacionales.map(hofTarjetaInternacional).join("")}</div>
+ <button class="hof-btn" onclick="mostrar('halloffame')">⬅ VOLVER AL HALL OF FAME</button>`;
+}
+
+const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki)$/);
+if(hofEquipoInternacionalSeleccionado){
+ const e=hofEquiposInternacionales.find(x=>x.id===hofEquipoInternacionalSeleccionado[1]);
+ contenido.innerHTML=`
+ <h2>🏆 HALL OF FAME — INTERNACIONAL</h2>
+ <div class="hof-cabecera-equipo">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><span class="hof-bandera-pl" style="width:68px;height:44px;flex-basis:44px;" aria-label="Bandera de Polonia"><span></span><span></span></span><strong style="color:#f5d778;">${e.pais}</strong></div>
+  <div><h3>${e.nombre.toUpperCase()}</h3><p class="hof-pais">${e.pais}</p><p class="hof-total"><strong>${e.total} títulos oficiales</strong></p></div>
+ </div>
+ <h2 style="text-align:center;">PALMARÉS POR COMPETICIÓN</h2>
+ <div class="hof-titulos-grid">${e.titulos.map(t=>`<div class="hof-titulo-card"><div class="hof-cantidad">${t.n} ×</div><img src="${t.img}" alt="Trofeo ${t.t}"><strong>${t.t}</strong><div class="hof-temporadas">Temporadas ${t.temp}</div></div>`).join("")}</div>
+ <button class="hof-btn" onclick="mostrar('halloffame_internacional')">⬅ VOLVER A INTERNACIONAL</button>`;
 }
 
 const hofEquipoSeleccionado=seccion.match(/^halloffame_(malaga|teka|targaryen|nycosmos|benimamet|lalin|diego|pulguense|metal|pontes|celtic)$/);
