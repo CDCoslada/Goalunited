@@ -1518,7 +1518,8 @@ const hofEquiposInternacionales = [
 
 function hofTarjetaInternacional(e){
  return `<div class="hof-equipo-card">
-  <div style="display:flex;justify-content:center;margin:0 auto 14px;"><span class="hof-bandera-pl" aria-label="Bandera de Polonia"><span></span><span></span></span></div>
+  <img src="Rybki.png" alt="Escudo de Rybki Squad">
+<div style="display:flex;justify-content:center;margin:0 auto 14px;"><span class="hof-bandera-pl" aria-label="Bandera de Polonia"><span></span><span></span></span></div>
   <h3>${e.nombre}</h3>
   <p class="hof-pais">${e.pais}</p>
   <p><strong>${e.total} títulos oficiales</strong></p>
@@ -1580,6 +1581,7 @@ if(hofEquipoInternacionalSeleccionado){
  contenido.innerHTML=`
  <h2>🏆 HALL OF FAME — INTERNACIONAL</h2>
  <div class="hof-cabecera-equipo">
+ <img src="Rybki.png" alt="Escudo de Rybki Squad">
   <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><span class="hof-bandera-pl" style="width:68px;height:44px;flex-basis:44px;" aria-label="Bandera de Polonia"><span></span><span></span></span><strong style="color:#f5d778;">${e.pais}</strong></div>
   <div><h3>${e.nombre.toUpperCase()}</h3><p class="hof-pais">${e.pais}</p><p class="hof-total"><strong>${e.total} títulos oficiales</strong></p></div>
  </div>
