@@ -1503,23 +1503,43 @@ const hofEquiposNacionales = [
   titulos:[{n:3,t:"LIGA EFECTO",img:"Trofliga.png",temp:"58, 43 y 42"},{n:2,t:"COPA EFECTO",img:"Trofcopa.png",temp:"53 y 51"}]}
 ];
 
-// Equipos internacionales del Hall of Fame. Los títulos polacos se
-// distinguen de las competiciones de los servidores españoles Focos y Efecto.
+// Equipos internacionales del Hall of Fame.
 const hofEquiposInternacionales = [
- {id:"rybki", nombre:"Rybki Squad", pais:"POLONIA", total:14,
+ {id:"rybki", nombre:"Rybki Squad", pais:"POLONIA", escudo:"Rybki.png", total:14,
   titulos:[
    {n:3,t:"LIGA FOCOS — POLONIA",img:"Trofliga.png",temp:"68, 69 y 70"},
    {n:6,t:"COPA FOCOS — POLONIA",img:"Trofcopa.png",temp:"54, 60, 63, 64, 66 y 68"},
    {n:2,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"55 y 59"},
    {n:1,t:"MASTERS INTERNACIONAL PLATA",img:"TrofMastersPlata.png",temp:"56"},
    {n:2,t:"ELITE CHAMPIONS LEAGUE",img:"TrofEliteChampions.png",temp:"17 y 18"}
+  ]},
+ {id:"rayan", nombre:"Rayan", pais:"EMIRATOS ÁRABES UNIDOS", escudo:"Rayan.png", total:62,
+  titulos:[
+   {n:23,t:"LIGA FOCOS — EAU",img:"Trofliga.png",temp:"28, 29, 30, 49, 50, 51, 52, 54, 55, 56, 57, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69 y 70"},
+   {n:34,t:"COPA FOCOS — EAU",img:"Trofcopa.png",temp:"27, 28, 29, 30, 32, 33, 34, 35, 37, 38, 40, 41, 42, 43, 44, 45, 46, 47, 49, 50, 52, 53, 54, 56, 58, 59, 60, 61, 62, 63, 64, 65, 66 y 67"},
+   {n:2,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"49 y 51"},
+   {n:3,t:"ELITE CHAMPIONS LEAGUE",img:"TrofEliteChampions.png",temp:"14, 15 y 19"}
   ]}
 ];
 
+function hofBanderaInternacional(e, ancho="42px", alto="28px"){
+ if(e.id==="rybki"){
+  return `<span class="hof-bandera-pl" style="width:${ancho};height:${alto};" aria-label="Bandera de Polonia"><span></span><span></span></span>`;
+ }
+ return `<span style="display:inline-flex;width:${ancho};height:${alto};overflow:hidden;flex-shrink:0;" aria-label="Bandera de Emiratos Árabes Unidos">
+  <span style="width:25%;background:#ff0000;"></span>
+  <span style="width:75%;display:flex;flex-direction:column;">
+   <span style="height:33.33%;background:#00732f;"></span>
+   <span style="height:33.33%;background:#fff;"></span>
+   <span style="height:33.33%;background:#000;"></span>
+  </span>
+ </span>`;
+}
+
 function hofTarjetaInternacional(e){
  return `<div class="hof-equipo-card">
-  <img src="Rybki.png" alt="Escudo de Rybki Squad">
-<div style="display:flex;justify-content:center;margin:0 auto 14px;"><span class="hof-bandera-pl" aria-label="Bandera de Polonia"><span></span><span></span></span></div>
+  <img src="${e.escudo}" alt="Escudo de ${e.nombre}" onerror="this.style.opacity='.35';this.alt='Escudo no disponible';">
+  <div style="display:flex;justify-content:center;margin:0 auto 14px;">${hofBanderaInternacional(e)}</div>
   <h3>${e.nombre}</h3>
   <p class="hof-pais">${e.pais}</p>
   <p><strong>${e.total} títulos oficiales</strong></p>
@@ -1575,14 +1595,14 @@ if(seccion=="halloffame_internacional"){
  <button class="hof-btn" onclick="mostrar('halloffame')">⬅ VOLVER AL HALL OF FAME</button>`;
 }
 
-const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki)$/);
+const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki|rayan)$/);
 if(hofEquipoInternacionalSeleccionado){
  const e=hofEquiposInternacionales.find(x=>x.id===hofEquipoInternacionalSeleccionado[1]);
  contenido.innerHTML=`
  <h2>🏆 HALL OF FAME — INTERNACIONAL</h2>
  <div class="hof-cabecera-equipo">
- <img src="Rybki.png" alt="Escudo de Rybki Squad">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><span class="hof-bandera-pl" style="width:68px;height:44px;flex-basis:44px;" aria-label="Bandera de Polonia"><span></span><span></span></span><strong style="color:#f5d778;">${e.pais}</strong></div>
+  <img src="${e.escudo}" alt="Escudo de ${e.nombre}" onerror="this.style.opacity='.35';this.alt='Escudo no disponible';">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">${hofBanderaInternacional(e,"68px","44px")}<strong style="color:#f5d778;">${e.pais}</strong></div>
   <div><h3>${e.nombre.toUpperCase()}</h3><p class="hof-pais">${e.pais}</p><p class="hof-total"><strong>${e.total} títulos oficiales</strong></p></div>
  </div>
  <h2 style="text-align:center;">PALMARÉS POR COMPETICIÓN</h2>
