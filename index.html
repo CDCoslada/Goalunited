@@ -1260,111 +1260,212 @@ El cuadro eliminatorio será publicado tras la fase de grupos.
 
 }
 
+
 if(seccion=="noticias"){
 
 contenido.innerHTML=`
 
+<style>
+.noticia-card{
+    background:#f7f8fa;
+    border:1px solid #e1e5eb;
+    border-left:5px solid #d4af37;
+    border-radius:12px;
+    padding:22px 25px;
+    margin:18px 0;
+    box-shadow:0 3px 9px rgba(0,0,0,.06);
+}
+
+.noticia-fecha{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#9a7515;
+    font-size:13px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:12px;
+}
+
+.noticia-titulo{
+    color:#07142d;
+    font-size:20px;
+    font-weight:bold;
+    line-height:1.35;
+    margin-bottom:14px;
+}
+
+.noticia-texto{
+    color:#333;
+    font-size:15px;
+    line-height:1.7;
+    text-align:justify;
+}
+
+.noticia-texto p{
+    margin:0 0 12px;
+}
+
+.noticia-texto p:last-child{
+    margin-bottom:0;
+}
+
+@media(max-width:600px){
+    .noticia-card{
+        padding:17px;
+        margin:14px 0;
+    }
+    .noticia-titulo{
+        font-size:18px;
+    }
+    .noticia-texto{
+        font-size:14px;
+        text-align:left;
+    }
+}
+</style>
+
 <h2>📰 NOTICIAS</h2>
-<div class="noticia">
-    <h3>📢 09/11/2026🏆 ¡NOVEDADES EN GOALUNITEDBAR!</h3>
 
-    <p>
+<!-- NOTICIA 1 -->
+<div class="noticia-card">
+
+    <div class="noticia-fecha">📢 09/11/2026</div>
+
+    <div class="noticia-titulo">
+        🏆 ¡Novedades en GoalUnitedBar!
+    </div>
+
+    <div class="noticia-texto">
+
+        <p>
         ¡Seguimos creciendo y ampliando la página!
-    </p>
+        </p>
 
-    <p>
-        Ya está terminada la pestaña de <strong>COMPETICIONES INTERNACIONALES</strong>,
-        donde podréis consultar y seguir las principales competiciones internacionales de GoalUnited.
-    </p>
+        <p>
+        Ya está terminada la pestaña de <strong>COMPETICIONES INTERNACIONALES</strong>, donde podréis consultar y seguir las principales competiciones internacionales de GoalUnited.
+        </p>
 
-    <p>
-        Además, hemos incorporado una nueva sección: el <strong>HALL OF FAME</strong>,
-        un espacio dedicado a los mejores equipos de la historia, donde reuniremos
-        sus grandes logros, títulos y trayectorias para reconocer a quienes han dejado huella en el juego.
-    </p>
+        <p>
+        Además, hemos incorporado una nueva sección: el <strong>HALL OF FAME</strong>, un espacio dedicado a los mejores equipos de la historia, donde reuniremos sus grandes logros, títulos y trayectorias para reconocer a quienes han dejado huella en el juego.
+        </p>
 
-    <p>
-        📢 <strong>¡Os invitamos a visitar ambas secciones y descubrir todo lo que hemos preparado!</strong>
-    </p>
+        <p>
+        <strong>¡Os invitamos a visitar ambas secciones y descubrir todo lo que hemos preparado!</strong>
+        </p>
 
-    <p>
-        Seguimos trabajando para ofreceros un punto de encuentro donde compartir
-        competiciones, historia y pasión por GoalUnited.
-    </p>
-</div>
-<div class="noticia">
+        <p>
+        Seguimos trabajando para ofreceros un punto de encuentro donde compartir competiciones, historia y pasión por GoalUnited.
+        </p>
 
-<h3>📢 26/10/2026 - ¡Las competiciones nacionales ya están listas!</h3>
-
-<p>
-Me alegra anunciar que la pestaña <strong>Competiciones Nacionales</strong> ya está terminada. Desde ahora, podréis consultar en ella la información de las competiciones nacionales de GoalUnited.
-</p>
-
-<p>
-Pero esto no acaba aquí. En los próximos días comenzaré a preparar la sección de <strong>Competiciones Internacionales</strong>, donde iré incorporando nuevas competiciones para seguir ampliando el contenido de la web.
-</p>
-
-<p>
-Seguimos trabajando para convertir GoalUnitedBar en un punto de encuentro para todos los mánagers y aficionados al juego.
-</p>
-
-</div>
-<div class="noticia">
-
-<h3>📅 02/10/2026 - Nueva sección GOALUNITED</h3>
-
-<p>
-Seguimos trabajando para hacer crecer la comunidad de la Liga Elite España.
-
-Desde hoy queda inaugurada la nueva pestaña <strong>GOALUNITED</strong>, una sección en la que voy a invertir muchas horas de trabajo porque considero que puede convertirse en una herramienta muy útil para todos los jugadores.
-
-En este apartado se irán añadiendo progresivamente guías, novedades del juego, tácticas, consejos para principiantes, análisis y todo tipo de contenido relacionado con GoalUnited.
-
-No obstante, el principal motivo de la creación de esta sección será la elaboración de un gran archivo histórico de las competiciones más importantes del juego. La idea es recopilar y conservar información sobre campeones, subcampeones, clasificaciones y otros datos relevantes para que cualquier usuario pueda consultar la historia de estas competiciones en cualquier momento.
-
-Como primera muestra del trabajo que se irá realizando, ya se han añadido los documentos correspondientes a las dos copas de la Temporada 70. Con ellos podréis haceros una idea de la estructura, el formato y el nivel de detalle que tendrán los futuros archivos históricos de las distintas competiciones.
-
-Para ello solicito la colaboración de toda la comunidad. Cualquier captura, documento, clasificación o material gráfico que sirva para acreditar campeones históricos será bienvenido y podrá ayudar a completar este archivo entre todos.
-
-Muchas gracias por vuestra colaboración y apoyo para seguir construyendo este proyecto entre todos.
-</p>
-
-</div>
-<div class="tarjeta">
-
-<h3>📢 30/09/2026 - Actualización sobre la próxima edición</h3>
-
-<p>
-En la pestaña <b>Participantes</b> se irán incorporando los equipos que participarán en la próxima edición de la Liga Elite España. A medida que los managers accedan al torneo y confirmen su participación, se les creará una ficha personalizada junto a su escudo correspondiente.
-</p>
-
-<p>
-Aprovechamos para felicitar a <b>Malaga Champion</b> y <b>Palomos Cojos F.C.</b>, campeones de Copa de los servidores Focos y Efecto respectivamente. ¡Enhorabuena por el logro!
-</p>
-
-<p>
-Al haber obtenido ambos equipos su clasificación por otros criterios, sus plazas pasan a ser ocupadas por los campeones de Segunda División. Del mismo modo, <b>Cubillos F.C.</b> libera una plaza adicional al contar con dos equipos clasificados en la máxima categoría.
-</p>
-
-<p>
-Por tanto, las 9 plazas disponibles serán ofrecidas a los 8 campeones de Segunda División y al mejor subcampeón de todas las Segundas Divisiones. En caso de que alguno de ellos rechace la invitación o no confirme su participación, la plaza correrá al siguiente equipo de la lista de reserva.
-</p>
-
-<p>
-Un saludo,<br>
-<b>Organización Liga Elite España</b>
-</p>
-
+    </div>
 </div>
 
-<div class="tarjeta">
 
-<h3>🔥 Próximamente</h3>
+<!-- NOTICIA 2 -->
+<div class="noticia-card">
 
-<p>
-Aquí aparecerán sorteos, clasificaciones, resultados y anuncios oficiales.
-</p>
+    <div class="noticia-fecha">📢 26/10/2026</div>
 
+    <div class="noticia-titulo">
+        ¡Las competiciones nacionales ya están listas!
+    </div>
+
+    <div class="noticia-texto">
+
+        <p>
+        Me alegra anunciar que la pestaña <strong>Competiciones Nacionales</strong> ya está terminada. Desde ahora, podréis consultar en ella la información de las competiciones nacionales de GoalUnited.
+        </p>
+
+        <p>
+        Pero esto no acaba aquí. En los próximos días comenzaré a preparar la sección de <strong>Competiciones Internacionales</strong>, donde iré incorporando nuevas competiciones para seguir ampliando el contenido de la web.
+        </p>
+
+        <p>
+        Seguimos trabajando para convertir GoalUnitedBar en un punto de encuentro para todos los mánagers y aficionados al juego.
+        </p>
+
+    </div>
+</div>
+
+
+<!-- NOTICIA 3 -->
+<div class="noticia-card">
+
+    <div class="noticia-fecha">📢 02/10/2026</div>
+
+    <div class="noticia-titulo">
+        Nueva sección GoalUnited
+    </div>
+
+    <div class="noticia-texto">
+
+        <p>
+        Seguimos trabajando para hacer crecer la comunidad de la Liga Elite España.
+        </p>
+
+        <p>
+        Desde hoy queda inaugurada la nueva pestaña <strong>GOALUNITED</strong>, una sección en la que voy a invertir muchas horas de trabajo porque considero que puede convertirse en una herramienta muy útil para todos los jugadores.
+        </p>
+
+        <p>
+        En este apartado se irán añadiendo progresivamente guías, novedades del juego, tácticas, consejos para principiantes, análisis y todo tipo de contenido relacionado con GoalUnited.
+        </p>
+
+        <p>
+        No obstante, el principal motivo de la creación de esta sección será la elaboración de un gran archivo histórico de las competiciones más importantes del juego. La idea es recopilar y conservar información sobre campeones, subcampeones, clasificaciones y otros datos relevantes para que cualquier usuario pueda consultar la historia de estas competiciones en cualquier momento.
+        </p>
+
+        <p>
+        Como primera muestra del trabajo que se irá realizando, ya se han añadido los documentos correspondientes a las dos copas de la Temporada 70. Con ellos podréis haceros una idea de la estructura, el formato y el nivel de detalle que tendrán los futuros archivos históricos de las distintas competiciones.
+        </p>
+
+        <p>
+        Para ello solicito la colaboración de toda la comunidad. Cualquier captura, documento, clasificación o material gráfico que sirva para acreditar campeones históricos será bienvenido y podrá ayudar a completar este archivo entre todos.
+        </p>
+
+        <p>
+        Muchas gracias por vuestra colaboración y apoyo para seguir construyendo este proyecto entre todos.
+        </p>
+
+    </div>
+</div>
+
+
+<!-- NOTICIA 4 -->
+<div class="noticia-card">
+
+    <div class="noticia-fecha">📢 30/09/2026</div>
+
+    <div class="noticia-titulo">
+        Actualización sobre la próxima edición
+    </div>
+
+    <div class="noticia-texto">
+
+        <p>
+        En la pestaña <strong>Participantes</strong> se irán incorporando los equipos que participarán en la próxima edición de la Liga Elite España. A medida que los managers accedan al torneo y confirmen su participación, se les creará una ficha personalizada junto a su escudo correspondiente.
+        </p>
+
+        <p>
+        Aprovechamos para felicitar a <strong>Malaga Champion</strong> y <strong>Palomos Cojos F.C.</strong>, campeones de Copa de los servidores Focos y Efecto respectivamente. ¡Enhorabuena por el logro!
+        </p>
+
+        <p>
+        Al haber obtenido ambos equipos su clasificación por otros criterios, sus plazas pasan a ser ocupadas por los campeones de Segunda División. Del mismo modo, <strong>Cubillos F.C.</strong> libera una plaza adicional al contar con dos equipos clasificados en la máxima categoría.
+        </p>
+
+        <p>
+        Por tanto, las 9 plazas disponibles serán ofrecidas a los 8 campeones de Segunda División y al mejor subcampeón de todas las Segundas Divisiones. En caso de que alguno de ellos rechace la invitación o no confirme su participación, la plaza correrá al siguiente equipo de la lista de reserva.
+        </p>
+
+        <p>
+        Un saludo,<br>
+        <strong>Organización Liga Elite España</strong>
+        </p>
+
+    </div>
 </div>
 
 `;
