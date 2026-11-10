@@ -1653,10 +1653,25 @@ const hofEquiposInternacionales = [
    {n:4,t:"LIGA FOCOS — ALEMANIA",img:"Trofliga.png",temp:"10, 11, 13 y 14"},
    {n:2,t:"COPA FOCOS — ALEMANIA",img:"Trofcopa.png",temp:"12 y 13"},
    {n:3,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"1, 2 y 6"}
+  ]},
+ {id:"true", nombre:"True Red FC", pais:"VIETNAM", escudo:"True.png", total:7,
+  titulos:[
+   {n:2,t:"LIGA FOCOS — VIETNAM",img:"Trofliga.png",temp:"31 y 33"},
+   {n:3,t:"COPA FOCOS — VIETNAM",img:"Trofcopa.png",temp:"27, 33 y 42"},
+   {n:2,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"19 y 24"}
+  ]},
+ {id:"dela", nombre:"DELA™ FC", pais:"VIETNAM", escudo:"Dela.png", total:18,
+  titulos:[
+   {n:6,t:"LIGA FOCOS — VIETNAM",img:"Trofliga.png",temp:"35, 38, 39, 45, 48 y 54"},
+   {n:8,t:"COPA FOCOS — VIETNAM",img:"Trofcopa.png",temp:"23, 32, 36, 40, 45, 46, 57 y 62"},
+   {n:4,t:"MASTERS INTERNACIONAL PLATA",img:"TrofMastersPlata.png",temp:"51, 52, 55 y 60"}
   ]}
 ];
 
 function hofBanderaInternacional(e, ancho="42px", alto="28px"){
+ if(e.id==="true" || e.id==="dela"){
+  return `<span style="display:flex;align-items:center;justify-content:center;width:${ancho};height:${alto};background:#da251d;flex-shrink:0;" aria-label="Bandera de Vietnam"><span style="color:#ff0;font-size:18px;line-height:1;">★</span></span>`;
+ }
  if(e.id==="rybki"){
   return `<span class="hof-bandera-pl" style="width:${ancho};height:${alto};" aria-label="Bandera de Polonia"><span></span><span></span></span>`;
  }
@@ -1736,7 +1751,7 @@ if(seccion=="halloffame_internacional"){
  <button class="hof-btn" onclick="mostrar('halloffame')">⬅ VOLVER AL HALL OF FAME</button>`;
 }
 
-const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki|rayan|svweststadt)$/);
+const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki|rayan|svweststadt|true|dela)$/);
 if(hofEquipoInternacionalSeleccionado){
  const e=hofEquiposInternacionales.find(x=>x.id===hofEquipoInternacionalSeleccionado[1]);
  contenido.innerHTML=`
