@@ -1647,6 +1647,12 @@ const hofEquiposInternacionales = [
    {n:34,t:"COPA FOCOS — EAU",img:"Trofcopa.png",temp:"27, 28, 29, 30, 32, 33, 34, 35, 37, 38, 40, 41, 42, 43, 44, 45, 46, 47, 49, 50, 52, 53, 54, 56, 58, 59, 60, 61, 62, 63, 64, 65, 66 y 67"},
    {n:2,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"49 y 51"},
    {n:3,t:"ELITE CHAMPIONS LEAGUE",img:"TrofEliteChampions.png",temp:"14, 15 y 19"}
+  ]},
+ {id:"svweststadt", nombre:"SV Weststadt", pais:"ALEMANIA", escudo:"Cubillos.png", total:9,
+  titulos:[
+   {n:4,t:"LIGA FOCOS — ALEMANIA",img:"Trofliga.png",temp:"10, 11, 13 y 14"},
+   {n:2,t:"COPA FOCOS — ALEMANIA",img:"Trofcopa.png",temp:"12 y 13"},
+   {n:3,t:"MASTERS INTERNACIONAL ORO",img:"TrofMastersOro.png",temp:"1, 2 y 6"}
   ]}
 ];
 
@@ -1654,6 +1660,13 @@ function hofBanderaInternacional(e, ancho="42px", alto="28px"){
  if(e.id==="rybki"){
   return `<span class="hof-bandera-pl" style="width:${ancho};height:${alto};" aria-label="Bandera de Polonia"><span></span><span></span></span>`;
  }
+  if(e.id==="svweststadt"){
+ return `<span style="display:flex;flex-direction:column;width:${ancho};height:${alto};overflow:hidden;flex-shrink:0;" aria-label="Bandera de Alemania">
+  <span style="height:33.33%;background:#000;"></span>
+  <span style="height:33.33%;background:#dd0000;"></span>
+  <span style="height:33.33%;background:#ffce00;"></span>
+ </span>`;
+}
  return `<span style="display:inline-flex;width:${ancho};height:${alto};overflow:hidden;flex-shrink:0;" aria-label="Bandera de Emiratos Árabes Unidos">
   <span style="width:25%;background:#ff0000;"></span>
   <span style="width:75%;display:flex;flex-direction:column;">
@@ -1723,7 +1736,7 @@ if(seccion=="halloffame_internacional"){
  <button class="hof-btn" onclick="mostrar('halloffame')">⬅ VOLVER AL HALL OF FAME</button>`;
 }
 
-const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki|rayan)$/);
+const hofEquipoInternacionalSeleccionado=seccion.match(/^halloffame_(rybki|rayan|svweststadt)$/);
 if(hofEquipoInternacionalSeleccionado){
  const e=hofEquiposInternacionales.find(x=>x.id===hofEquipoInternacionalSeleccionado[1]);
  contenido.innerHTML=`
