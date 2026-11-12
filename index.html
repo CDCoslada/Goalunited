@@ -1983,6 +1983,30 @@ ELITE CHAMPIONS LEAGUE
 
 </button>
 
+<button class="boton-competicion" onclick="mostrar('bronzeleague')" style="
+width:100%;
+max-width:100%;
+max-width:450px;
+padding:15px;
+font-size:18px;
+font-weight:bold;
+background:#d4af37;
+color:#07142d;
+border:none;
+border-radius:10px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:12px;
+text-align:left;
+">
+
+<img src="Bronze.png" style="width:40px;height:40px;object-fit:contain;">
+
+BRONZE LEAGUE
+
+</button>
+
 </div>
 
 `;
@@ -1994,7 +2018,7 @@ ELITE CHAMPIONS LEAGUE
 // MENÚS DE COMPETICIONES INTERNACIONALES
 // ========================================
 
-if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
+if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions" || seccion=="bronzeleague"){
 
     let titulo="";
     let trofeo="";
@@ -2013,6 +2037,10 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
     if(seccion=="elitechampions"){
         titulo="ELITE CHAMPIONS LEAGUE";
         trofeo="TrofEliteChampions.png";
+    }
+    if(seccion=="bronzeleague"){
+        titulo="BRONZE LEAGUE";
+        trofeo="Bronze.png";
     }
 
     contenido.innerHTML=`
@@ -2094,7 +2122,9 @@ if(
     seccion=="masterplata_palmares" ||
     seccion=="masterplata_ranking" ||
     seccion=="elitechampions_palmares" ||
-    seccion=="elitechampions_ranking"
+    seccion=="elitechampions_ranking" ||
+    seccion=="bronzeleague_palmares" ||
+    seccion=="bronzeleague_ranking"
 ){
     let esPalmares = seccion.endsWith("_palmares");
     let volver = seccion.replace(esPalmares ? "_palmares" : "_ranking", "");
@@ -2107,9 +2137,12 @@ if(
     } else if(volver=="masterplata"){
         titulo="MASTERS INTERNACIONAL PLATA";
         trofeo="TrofMastersPlata.png";
-    } else {
+    } else if(volver=="elitechampions"){
         titulo="ELITE CHAMPIONS LEAGUE";
         trofeo="TrofEliteChampions.png";
+    } else {
+        titulo="BRONZE LEAGUE";
+        trofeo="Bronze.png";
     }
 
     // Historial del Masters Internacional Oro. Los países entre paréntesis
@@ -2244,6 +2277,18 @@ if(
 
     // Historial de Elite Champions League. El ranking se calcula automáticamente
     // contando los títulos de cada equipo en este historial.
+    // Historial de ECL Bronze League. Campeones y subcampeones de las ediciones 1 a 8.
+    const historialBronzeLeague = [
+        {temporada:8, campeon:"Cloughie's Heroes (England)", subcampeon:"Ton Pentre FC (Great Britain)"},
+        {temporada:7, campeon:"Unika Lion (INT) (International)", subcampeon:"Alpha Impact NH (International)"},
+        {temporada:6, campeon:"Lord of Lords (Chile)", subcampeon:"Şirinler City (Turkey)"},
+        {temporada:5, campeon:"Wildpark Warriors (Germany)", subcampeon:"KeroseneZest® (Italy)"},
+        {temporada:4, campeon:"Polpettoni UTD (Italy)", subcampeon:"Salt (Turkey)"},
+        {temporada:3, campeon:"Swansea Athletic (Brit Isles)", subcampeon:"Kolejarz Gliwice (Poland)"},
+        {temporada:2, campeon:"USCIA for Friends (Italy)", subcampeon:"Proovie (Italy)"},
+        {temporada:1, campeon:"Unika Lion (Turkey)", subcampeon:"Santillo ICATI (Spain)"}
+    ];
+
     const historialEliteChampions = [
         {temporada:19, campeon:"rayan (UAE)", subcampeon:"Diegotabanera F.C. (Spain)"},
         {temporada:18, campeon:"Rybki Squad (Poland)", subcampeon:"Diegotabanera F.C. (Spain)"},
@@ -2279,35 +2324,44 @@ if(
 
     function mostrarEquipoConBandera(nombre){
         if(!nombre || nombre === "—") return "—";
-        const coincidencia = nombre.match(/^(.*?)\s*\(([^()]*)\)\s*$/);
+        const coincidencia = nombre.match(/^(.*?)\\s*\\(([^()]*)\\)\\s*$/);
         if(!coincidencia) return nombre;
-        const equipo = coincidencia[1].trim();
+        let equipo = coincidencia[1].trim();
         const pais = coincidencia[2].trim();
+
+        // Los equipos internacionales llevan un emblema mundial azul.
+        if(pais === "International"){
+            equipo = equipo.replace(/\\s*\\(INT\\)/i, "").trim();
+            const banderaMundial = `<svg role="img" aria-label="Internacional" title="Internacional" viewBox="0 0 24 16" style="width:20px;height:15px;vertical-align:middle;margin-right:6px;" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" rx="2" fill="#1677d2"/><circle cx="12" cy="8" r="5.5" fill="none" stroke="#fff" stroke-width="1"/><path d="M6.8 8h10.4M12 2.5c2 1.7 2.8 3.5 2.8 5.5s-.8 3.8-2.8 5.5c-2-1.7-2.8-3.5-2.8-5.5s.8-3.8 2.8-5.5z" fill="none" stroke="#fff" stroke-width=".8"/></svg>`;
+            return `${banderaMundial}${equipo}`;
+        }
+
         const codigo = banderaPais[pais];
         if(!codigo) return equipo;
         const bandera = `<img src="https://flagcdn.com/20x15/${codigo}.png" alt="${pais}" title="${pais}" style="width:20px;height:15px;object-fit:cover;vertical-align:middle;margin-right:6px;" loading="lazy">`;
         return `${bandera}${equipo}`;
     }
 
-    if(volver === "masteroro" || volver === "masterplata" || volver === "elitechampions"){
+        if(volver === "masteroro" || volver === "masterplata" || volver === "elitechampions" || volver === "bronzeleague"){
         const historialActual =
             volver === "masteroro" ? historialMastersOro :
             volver === "masterplata" ? historialMastersPlata :
-            historialEliteChampions;
+            volver === "elitechampions" ? historialEliteChampions :
+            historialBronzeLeague;
         const colorFondo =
             volver === "masteroro" ? "#d4af37" :
             volver === "masterplata" ? "#c0c0c0" :
-            "#1d4ed8";
+            volver === "elitechampions" ? "#1d4ed8" : "#cd7f32";
         const colorTexto =
-            volver === "masteroro" || volver === "masterplata" ? "#07142d" : "#ffffff";
+            volver === "masteroro" || volver === "masterplata" || volver === "bronzeleague" ? "#211306" : "#ffffff";
         if(esPalmares){
-            const filasPalmares = historialActual.map(d => `
+            const filasPalmares = historialActual.length ? historialActual.map(d => `
                 <tr>
                     <td style="padding:10px;border-bottom:1px solid #ddd;">${d.temporada}</td>
                     <td style="padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;white-space:nowrap;">${mostrarEquipoConBandera(d.campeon)}</td>
                     <td style="padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;white-space:nowrap;">${mostrarEquipoConBandera(d.subcampeon)}</td>
                 </tr>
-            `).join("");
+            `).join("") : `<tr><td colspan="3" style="padding:18px;color:#666;">Próximamente: historial de temporadas y campeones.</td></tr>`;
             contenido.innerHTML = `
                 <button onclick="mostrar('${volver}')" style="padding:10px 20px;background:${colorFondo};color:${colorTexto};border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:20px;">⬅ VOLVER</button>
                 <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
@@ -2331,11 +2385,11 @@ if(
                 }
             });
             const ranking = Object.entries(conteo).sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0], "es"));
-            const filasRanking = ranking.map(([equipo, titulos], i) => `
+            const filasRanking = ranking.length ? ranking.map(([equipo, titulos], i) => `
                 <tr><td style="padding:10px;border-bottom:1px solid #ddd;">${i+1}</td>
                     <td style="padding:10px 14px;border-bottom:1px solid #ddd;text-align:left;white-space:nowrap;">${mostrarEquipoConBandera(equipo)}</td>
                     <td style="padding:10px;border-bottom:1px solid #ddd;font-weight:bold;">${titulos}</td></tr>
-            `).join("");
+            `).join("") : `<tr><td colspan="3" style="padding:18px;color:#666;">El ranking se generará cuando se incorporen los primeros campeones.</td></tr>`;
             contenido.innerHTML = `
                 <button onclick="mostrar('${volver}')" style="padding:10px 20px;background:${colorFondo};color:${colorTexto};border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin-bottom:20px;">⬅ VOLVER</button>
                 <div style="display:flex;align-items:center;justify-content:center;gap:15px;flex-wrap:wrap;">
@@ -2661,7 +2715,8 @@ if(
     seccion !== "copaefecto_palmares" &&
     seccion !== "masteroro_palmares" &&
     seccion !== "masterplata_palmares" &&
-    seccion !== "elitechampions_palmares"
+    seccion !== "elitechampions_palmares" &&
+    seccion !== "bronzeleague_palmares"
 ){
 
     let volver = seccion.replace("_palmares","");
@@ -2929,7 +2984,8 @@ if (seccion === "copaefecto_ranking") {
     seccion !== "copaefecto_ranking" &&
     seccion !== "masteroro_ranking" &&
     seccion !== "masterplata_ranking" &&
-    seccion !== "elitechampions_ranking"
+    seccion !== "elitechampions_ranking" &&
+    seccion !== "bronzeleague_ranking"
 ){
 
 let volver=seccion.replace("_ranking","");
