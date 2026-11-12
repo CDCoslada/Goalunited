@@ -2281,14 +2281,14 @@ if(
 
     function mostrarEquipoConBandera(nombre){
         if(!nombre || nombre === "—") return "—";
-        const coincidencia = nombre.match(/^(.*?)\\s*\\(([^()]*)\\)\\s*$/);
+        const coincidencia = nombre.match(/^(.*?)\s*\(([^()]*)\)\s*$/);
         if(!coincidencia) return nombre;
         let equipo = coincidencia[1].trim();
         const pais = coincidencia[2].trim();
 
         // Los equipos internacionales llevan un emblema mundial azul.
         if(pais === "International"){
-            equipo = equipo.replace(/\\s*\\(INT\\)/i, "").trim();
+            equipo = equipo.replace(/\s*\(INT\)/i, "").trim();
             const banderaMundial = `<svg role="img" aria-label="Internacional" title="Internacional" viewBox="0 0 24 16" style="width:20px;height:15px;vertical-align:middle;margin-right:6px;" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" rx="2" fill="#1677d2"/><circle cx="12" cy="8" r="5.5" fill="none" stroke="#fff" stroke-width="1"/><path d="M6.8 8h10.4M12 2.5c2 1.7 2.8 3.5 2.8 5.5s-.8 3.8-2.8 5.5c-2-1.7-2.8-3.5-2.8-5.5s.8-3.8 2.8-5.5z" fill="none" stroke="#fff" stroke-width=".8"/></svg>`;
             return `${banderaMundial}${equipo}`;
         }
