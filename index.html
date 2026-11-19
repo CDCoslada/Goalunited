@@ -2053,6 +2053,12 @@ if(seccion=="masteroro" || seccion=="masterplata" || seccion=="elitechampions"){
                 border-radius:10px;cursor:pointer;text-align:left;
             ">📊 RANKING</button>
 
+            ${seccion=="masteroro" ? `
+                <button class="boton-competicion" onclick="mostrar('masteroro_temporada61')">
+                    🏆 TEMPORADA 61
+                </button>
+            ` : ``}
+
             ${seccion=="elitechampions" ? `
                 ${[19,18,17,16,15,14,12,11,10,8,7,6,5].map(temporada => `
                     <button class="boton-competicion" onclick="mostrar('elitechampions_temporada${temporada}')">
@@ -2082,6 +2088,30 @@ if (temporadaEliteSeleccionada && temporadasEliteChampions.includes(Number(tempo
             margin-bottom:20px;
         ">⬅ VOLVER A TEMPORADAS</button>
         <img src="ECL${temporada}.png" alt="Elite Champions League - Temporada ${temporada}" style="
+            display:block;
+            width:100%;
+            max-width:100%;
+            height:auto;
+            margin:0 auto;
+            border-radius:12px;
+        ">
+    `;
+}
+
+// Imagen de la Temporada 61 del Masters Internacional Oro
+if (seccion=="masteroro_temporada61") {
+    contenido.innerHTML = `
+        <button onclick="mostrar('masteroro')" style="
+            padding:10px 20px;
+            background:linear-gradient(135deg,#f8e7a1,#d4af37);
+            color:#07142d;
+            border:none;
+            border-radius:10px;
+            font-weight:bold;
+            cursor:pointer;
+            margin-bottom:20px;
+        ">⬅ VOLVER A TEMPORADAS</button>
+        <img src="Temp 61.jpg" alt="Masters Internacional Oro - Temporada 61" style="
             display:block;
             width:100%;
             max-width:100%;
